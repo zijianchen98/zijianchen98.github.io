@@ -47,7 +47,7 @@ Hi! I am a first year PhD student at Institute of Image Communication and Inform
 - *2021.09* Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
 
 # 📖 Educations
-- *2024.09 - 2028.06 (normal), PhD student, Shanghai Jiao Tong University, Shanghai, China.
+- *2024.09 - 2028.06 (normal)*, PhD student, Shanghai Jiao Tong University, Shanghai, China.
 - *2020.09 - 2023.06*, Master student, East China University of Science and Technology, Shanghai, China.
 - *2016.09 - 2020.06*, Undergraduate, Wenzhou University, Wenzhou, China.
 
