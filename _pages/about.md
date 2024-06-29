@@ -20,11 +20,11 @@ redirect_from:
 Hi! I am a first year PhD student at Institute of Image Communication and Information Processing, Shanghai Jiao Tong University, advised by Prof. [Guangtao Zhai](https://scholar.google.com/citations?user=E6zbSYgAAAAJ&hl=zh-CN) and Prof.[Wenjun Zhang](https://ee.sjtu.edu.cn/FacultyDetail.aspx?id=14&infoid=66&flag=66). I did my bachelor and master degree at Wenzhou Univ. and East China Univ. of Science and Technology, respectively. My current research focus on image and video quality assessment, especially evaluating AI-generated contents.
 
 
-
+<!--   &nbsp;🎉🎉  -->
 
 # 🔥 News
-- *2022.02*: &nbsp;🎉🎉 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
-- *2022.02*: &nbsp;🎉🎉 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
+- *2024.06*: [GAIA](https://github.com/zijianchen98/GAIA), a Generic AI-generated Action dataset was released with a holistic evaluation of 18 T2V models.
+- *2024.02*:  
 
 # 📝 Publications 
 
