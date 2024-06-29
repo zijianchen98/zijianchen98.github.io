@@ -24,7 +24,7 @@ Hi! I am a first year PhD student at Institute of Image Communication and Inform
 
 # 🔥 News
 - *2024.06*: [GAIA](https://github.com/zijianchen98/GAIA), a Generic AI-generated Action dataset was released with a holistic evaluation of 18 T2V models.
-- *2024.02*:  
+- *2024.02*: [BAND-2k](https://ieeexplore.ieee.org/abstract/document/10438477/) and its early conf. version [FS-BAND](https://arxiv.org/abs/2311.18216) was accepted to IEEE TCSVT'24 and IEEE ISCAS'24, respectively.
 
 # 📝 Publications 
 
