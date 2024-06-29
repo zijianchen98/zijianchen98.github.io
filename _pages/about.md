@@ -17,7 +17,7 @@ redirect_from:
 
 <span class='anchor' id='about-me'></span>
 
-Hi! I am a first year PhD student at Institute of Image Communication and Information Processing, Shanghai Jiao Tong University, advised by Prof. [Guangtao Zhai](https://scholar.google.com/citations?user=E6zbSYgAAAAJ&hl=zh-CN) and Prof.[Wenjun Zhang](https://ee.sjtu.edu.cn/FacultyDetail.aspx?id=14&infoid=66&flag=66). I did my bachelor and master degree at Wenzhou Univ. and East China Univ. of Science and Technology, respectively. My current research focus on image and video quality assessment, especially evaluating AI-generated contents.
+Hi! I am a first year PhD student at Institute of Image Communication and Information Processing, Shanghai Jiao Tong University, advised by Prof. [Guangtao Zhai](https://scholar.google.com/citations?user=E6zbSYgAAAAJ&hl=zh-CN) and Prof.[Wenjun Zhang](https://ee.sjtu.edu.cn/FacultyDetail.aspx?id=14&infoid=66&flag=66). I did my bachelor and master degree at Wenzhou Univ. and East China Univ. of Sci. and Tech., respectively. My current research focus on image and video quality assessment, especially evaluating AI-generated contents.
 
 
 <!--   &nbsp;🎉🎉  -->
