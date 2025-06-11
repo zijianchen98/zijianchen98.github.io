@@ -194,10 +194,19 @@
 
   <center> <img class="center" src="./image/3.jpg" width="800px"> </center>
   <p style="text-align:justify; text-justify:inter-ideograph;">
-    <center> The DGM automatically discovers increasingly better coding agents and performs better on both (Left) SWE-bench and (Right) Polyglot. </center>
+    <left> On SWE-bench (a widely used benchmark requiring agents to resolve real-world GitHub issues), the DGM automatically improved its performance from 20.0% to 50.0%. On Polyglot (a multi-language coding benchmark), the DGM jumped performance from an initial 14.2% to 30.7%, which far surpasses the representative hand-designed agent by Aider. These substantial gains demonstrate the DGM’s ability to discover and implement beneficial changes to its own code. </left>
   </p>
 
   <br>
+
+
+  <p style="text-align:justify; text-justify:inter-ideograph;font-size:22px">
+     <left>
+     Such transferability was also evident across programming languages. 
+     A DGM variant whose self-improvement process was exclusively guided by its performance on Python tasks within the Polyglot benchmark subsequently demonstrated significant performance gains on tasks in entirely different programming languages (like Rust, C++, and Go) from the same benchmark (right panel in above figure).
+     </left>
+  </p>
+
 
   <center> <img class="center" src="./image/4.jpg" width="800px"> </center>
   <p style="text-align:justify; text-justify:inter-ideograph;">
@@ -205,7 +214,7 @@
   </p>
 
   <br>
-  <hr>
+ 
 
   <center> <img class="center" src="./image/5.jpg" width="800px"> </center>
   <p>
