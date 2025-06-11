@@ -160,7 +160,7 @@
 
   <center> <h2> <strong> Beginning </strong> </h2> </center>
   <div class="abstract-container">
-      <p style="text-align:justify; text-justify:inter-ideograph;">
+      <p style="text-align:justify; text-justify:inter-ideograph;font-size:22px;">
         <left>
           One tantalizing path toward that goal is an AI that improves itself by rewriting its own code, including any code responsible for learning. This idea, also known as a Gödel Machine, was proposed by Jürgen Schmidhuber decades ago, which is a hypothetical self-improving AI. 
           Recently, researchers from University of British Columbia, Vector Institute, Sakana AI, and Canada CIFAR AI Chair proposed a system (Darwin Gödel Machine, DGM) that harnesses the principles of open-ended algorithms like Darwinian evolution to search for improvements that empirically improve performance.
@@ -186,9 +186,9 @@
 
   <p>This first DGM is a coding agent that has the ability to:</p>
 
-  <p><li><h4>Read and Modify Its Own Code:</h4> It understands and can modify its own Python codebase to try to self-improve (e.g., adding a new tool, or suggesting a different workflow).</li></p>
-  <p><li><h4>Evaluate if the Change Improves Performance:</h4> Proposed new versions of itself are evaluated on coding benchmarks (like SWE-bench and Polyglot).</li></p>
-  <p><li><h4>Open-endedly Explore the AI Design Space:</h4> New agents are added to an ever-expanding archive of interesting agents. Harnessing the power of open-ended algorithms, future self-modifications can then branch off from any agent in this growing archive, allowing for parallel exploration of many different evolutionary paths.</li></p>
+  <p><strong>Read and Modify Its Own Code:</strong> It understands and can modify its own Python codebase to try to self-improve (e.g., adding a new tool, or suggesting a different workflow).</p>
+<p><strong>Evaluate if the Change Improves Performance:</strong> Proposed new versions of itself are evaluated on coding benchmarks (like SWE-bench and Polyglot).</p>
+<p><strong>Open-endedly Explore the AI Design Space:</strong> New agents are added to an ever-expanding archive of interesting agents. Harnessing the power of open-ended algorithms, future self-modifications can then branch off from any agent in this growing archive, allowing for parallel exploration of many different evolutionary paths.</p>
 
   <br>
 
@@ -226,6 +226,22 @@
 
   <br>
   
+  <p style="text-align:justify; text-justify:inter-ideograph;font-size:22px">
+     <left>
+     Interestingly, the DGM engineered improvements within its own agent design not merely adaptations overfit to its model or task. 
+     The improvements discovered by the DGM (e.g., better tools, refined workflows) generalize to produce higher performance across different underlying foundation models. 
+     For example, an agent optimized with Claude 3.5 Sonnet also showed improved performance when powered by o3-mini or Claude 3.7 Sonnet (left two panels in the figure below). 
+     This shows that the DGM discovers general agent design improvements rather than just model-specific tricks.
+     </left>
+  </p>
+
+<p style="text-align:justify; text-justify:inter-ideograph;font-size:22px">
+     <left>
+     Such transferability was also evident across programming languages. 
+     A DGM variant whose self-improvement process was exclusively guided by its performance on Python tasks within the Polyglot benchmark subsequently demonstrated significant performance gains on tasks in entirely different programming languages (like Rust, C++, and Go) from the same benchmark (right panel in above figure).
+     </left>
+  </p>
+
   <hr>
 
   <center> <h2> <strong> References </strong> </h2> </center>
