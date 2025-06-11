@@ -153,9 +153,9 @@
 
   <center> <img src="./image/1.png" alt="alt text" style="width: 100%; object-fit: cover; max-width:100%;"></a> </center>
   <p style="text-align:justify; text-justify:inter-ideograph;">
-    <left>
+    <center>
       Illustration of incorporating Darwinian exploration into Gödel machine.
-    </left>
+    </center>
   </p>
 
   <center> <h2> <strong> Beginning </strong> </h2> </center>
@@ -177,46 +177,39 @@
   <center> <img class="center" src="./image/2.png" width="800px"></p> </center>
 
   <p style="text-align:justify; text-justify:inter-ideograph;">
-    <left>
+     <center>
      The Darwin Gödel Machine iteratively builds a growing archive of agents. 
      New agents are created and scored by interleaving self-modification with downstream task evaluation.
-    </left>
+    </center>
   </p>
   <br>
 
   <p>This first DGM is a coding agent that has the ability to:</p>
-  <ul>
+
   <li><strong>Read and Modify Its Own Code:</strong> It understands and can modify its own Python codebase to try to self-improve (e.g., adding a new tool, or suggesting a different workflow).</li>
   <li><strong>Evaluate if the Change Improves Performance:</strong> Proposed new versions of itself are evaluated on coding benchmarks (like SWE-bench and Polyglot).</li>
   <li><strong>Open-endedly Explore the AI Design Space:</strong> New agents are added to an ever-expanding archive of interesting agents. Harnessing the power of open-ended algorithms, future self-modifications can then branch off from any agent in this growing archive, allowing for parallel exploration of many different evolutionary paths.</li>
-  </ul>
 
   <br>
 
-  <center> <img class="center" src="./image/3.png" width="800px"> </center>
+  <center> <img class="center" src="./image/3.jpg" width="800px"> </center>
   <p style="text-align:justify; text-justify:inter-ideograph;">
-    <center> <strong style="font-weight: 900; font-size: 18px"> Data sources and task category statistics visualization of SpatialScore. </strong> </center>
+    <center> The DGM automatically discovers increasingly better coding agents and performs better on both (Left) SWE-bench and (Right) Polyglot. </center>
   </p>
 
   <br>
 
-  <center> <img class="center" src="./image/4.png" width="800px"> </center>
+  <center> <img class="center" src="./image/4.jpg" width="800px"> </center>
   <p style="text-align:justify; text-justify:inter-ideograph;">
-    <center> <strong style="font-weight: 900; font-size: 18px"> Data sources and task category statistics visualization of VGBench. </strong> </center>
+    <center> Archive of coding agents generated during the DGM run on SWE-bench.</center>
   </p>
 
   <br>
   <hr>
 
-  <center> <h2> <strong> SpatialAgent Architecture </strong> </h2> </center>
-  <center> <img class="center" src="./resources/architecture.png" width="800px"> </center>
+  <center> <img class="center" src="./image/5.jpg" width="800px"> </center>
   <p>
-    <left>
-      <strong style="font-weight: 900"> Architecture and Workflow of SpatialAgent. </strong>
-      (a) Specialized spatial understanding tools integrated in SpatialAgent;
-      (b) The <i>Plan-Execute</i> paradigm for hierarchical task decomposition and stepwise execution;
-      (c) The <i>ReAct</i> paradigm for iterative interaction and dynamic strategy refinement.
-    </left>
+    <center> Performance progress and a summary of key innovations of the DGM on SWE-bench. The dark line shows the lineage of the final best-discovered agent.</center>
   </p>
 
   <br>
@@ -225,50 +218,15 @@
   <center> <h2> <strong> Results </strong> </h2> </center>
   <h3> <center> <strong> Quantitative Results </strong> </center> </h3>
   
-  <center> <img class="center" src="./resources/quantitative_results_1.png" width="800px"></p> </center>
+  <center> <img class="center" src="./image/6.jpg" width="800px"></p> </center>
   <p>
-    <left>
-      <strong style="font-weight: 900"> Quantitative Results on SpatialScore. </strong>
-      Here, Count., Obj-Loc., Pos-Rel., Dist., Obj-Prop., and Cam.&IT. refer to Counting, Object Localization, 3D Positional Relation, Depth & Distance, Object Properties, and Camera & Image Transformation, respectively.
-      Results with the best and second best results are <strong>bolded</strong> and <u>underlined</u>, respectively.
-    </left>
+    <center>
+      The superior performance of DGM-discovered agents can be transferred across different models (Left and Middle) and different task domains (Right), such as from Python tasks to tasks in other languages like Rust, C++, Go, and others.
+    </center>
   </p>
 
   <br>
   
-  <center> <img class="center" src="./resources/quantitative_results_2.png" width="800px"> </center>
-  <p>
-    <left>
-      <strong style="font-weight: 900"> Quantitative Results on SpatialScore-Hard. </strong>
-      Our SpatialAgent demonstrates substantially greater performance improvements on this carefully curated, challenging subset, highlighting its specialized capabilities for spatial understanding tasks.
-    </left>
-  </p>
-
-  <br>
-  
-  <center> <img class="center" src="./resources/quantitative_results_3.png" width="800px"> </center>
-  <p>
-    <left>
-      <strong style="font-weight: 900"> Quantitative Results on VGBench. </strong>
-      Here, Homo., Pose-Est., 3D-Recon., Tracking, and Obj-Pos. denote Homography Matrix, Pose Estimation, 3D Reconstruction, Point Tracking, and Object Position, respectively.
-      Results with the best and second best results are are <strong>bolded</strong> and <u>underlined</u>.
-    </left>
-  </p>
-
-  <br>
-
-  <h3> <center> <strong> Qualitative Results </strong> </center> </h3>
-  <p> <img class="center" src="./resources/qualitative_results.png" width="800px"> </p>
-  <p>
-    <left>
-      <strong style="font-weight: 900"> Qualitative Results. </strong>
-      We present the comprehensive reasoning process of SpatialAgent against the direct responses of other models.
-      While occasional errors occur due to tool execution or interpretation mistakes, these limitations are expected to diminish as MLLMs continue to advance.
-    </left>
-  </p>
-
-  <br>
-
   <hr>
 
   <center> <h2> <strong> References </strong> </h2> </center>
