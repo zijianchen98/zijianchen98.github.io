@@ -127,47 +127,13 @@
             border-radius: 5px;
             cursor: pointer;
         }
-        .video-grid {
-            width: 100%;
-            margin: 0 auto;
-        }
-        .grid-sizer,
-
-     
-       
-
-        .sub-filter-button:hover,
-        .sub-filter-button.active {
-            background-color: #cc0000;
-        }
-
-        .play-button {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: rgba(0, 0, 0, 0.7);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            z-index: 10;
-        }
+ 
 
         /* Separator Styles */
         .separator {
             height: 2px;
-            background: linear-gradient(to right, #cc0000, #3399ff);
+            background: linear-gradient(to right, #60c601, #323232);
             margin: 60px 0;
-        }
-
-        /* Video Grid Container */
-        #grid-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 20px;
-            overflow: hidden;
         }
 
         /* LMM-JND-bench Section Styles */
@@ -220,20 +186,6 @@
             transform: scale(1.02);
         }
 
-        @media (max-width: 768px) {
-            .LMM-JND-bench {
-                padding: 60px 20px;
-            }
-
-            .LMM-JND-bench h2 {
-                font-size: 36px;
-            }
-
-            .LMM-JND-bench p {
-                font-size: 16px;
-            }
-        }
-
 
 
         /* Centered Title */
@@ -280,7 +232,6 @@
             line-height: 1.6;
         }
 
-
         /* Dataset info section (always visible, no blur) */
         .dataset-info {
             padding: 20px;
@@ -294,202 +245,6 @@
             max-width: 1400px;
             margin: 40px auto; /* Reduced from 80px to 40px */
             padding: 0 20px;
-        }
-
-        /* Custom scrollbar */
-        #video-section::-webkit-scrollbar {
-            width: 10px;
-        }
-
-        #video-section::-webkit-scrollbar-track {
-            background: #2a2a2a;
-            border-radius: 5px;
-        }
-
-        #video-section::-webkit-scrollbar-thumb {
-            background: #4a4a4a;
-            border-radius: 5px;
-        }
-
-        #video-section::-webkit-scrollbar-thumb:hover {
-            background: #5a5a5a;
-        }
-
-        /* Animation for the border */
-        @keyframes gradientBorder {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .filter-buttons {
-            margin: 20px 0;
-            text-align: center;
-        }
-
-        .filter-button {
-            padding: 8px 16px;
-            margin: 0 5px;
-            border: none;
-            border-radius: 4px;
-            background: #333;
-            color: white;
-            cursor: pointer;
-        }
-
-        /* Animations */
-        @keyframes buttonPulse {
-            0% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.05);
-            }
-            100% {
-                transform: scale(1);
-            }
-        }
-
-        @keyframes shimmer {
-            0% {
-                left: -50%;
-            }
-            100% {
-                left: 150%;
-            }
-        }
-
-        /* Modal styles */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            z-index: 1000;
-            backdrop-filter: blur(5px);
-        }
-
-        .modal-content {
-            position: relative;
-            background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
-            margin: 15% auto;
-            padding: 0;
-            width: 400px;
-            border-radius: 15px;
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
-            animation: modalSlideIn 0.3s ease-out;
-        }
-
-        .modal-header {
-            padding: 20px;
-            background: linear-gradient(145deg, #cc0000, #990000);
-            border-radius: 15px 15px 0 0;
-            color: white;
-        }
-
-        .modal-header h2 {
-            margin: 0;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.5em;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .modal-body {
-            padding: 20px;
-            color: #ffffff;
-            font-family: 'Raleway', sans-serif;
-            font-size: 1.1em;
-            line-height: 1.5;
-        }
-
-        .modal-footer {
-            padding: 20px;
-            display: flex;
-            justify-content: flex-end;
-            gap: 10px;
-            border-top: 1px solid #333;
-        }
-
-        .modal-button {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-family: 'Raleway', sans-serif;
-            font-size: 1em;
-            transition: all 0.3s ease;
-        }
-
-        .cancel-btn {
-            background-color: #333;
-            color: white;
-        }
-
-        .confirm-btn {
-            background: linear-gradient(145deg, #cc0000, #990000);
-            color: white;
-        }
-
-        .modal-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        }
-
-        .cancel-btn:hover {
-            background-color: #444;
-        }
-
-        .confirm-btn:hover {
-            background: linear-gradient(145deg, #ff0000, #cc0000);
-        }
-
-        @keyframes modalSlideIn {
-            from {
-                transform: translateY(-100px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        /* Enhance the concealment and add darkening overlay */
-        #video-section:not(.unlocked) {
-            position: relative;
-            pointer-events: none;
-        }
-
-        #video-section:not(.unlocked)::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.8); /* Darker overlay without blur */
-            z-index: 2;
-        }
-
-        /* Remove the hint message */
-        #video-section:not(.unlocked)::after {
-            content: none;
-        }
-
-        /* Update the modal button styles */
-        .modal-button {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-family: 'Raleway', sans-serif;
-            font-size: 1em;
-            transition: all 0.3s ease;
         }
 
         .confirm-btn {
@@ -657,22 +412,6 @@
             display: block;
         }
 
-        @media (max-width: 768px) {
-            .key-features,
-            .performance-highlights {
-                grid-template-columns: 1fr;
-                gap: 15px;
-            }
-            
-            .highlight-text {
-                font-size: 16px;
-            }
-            
-            .feature-text {
-                font-size: 16px;
-            }
-        }
-
         /* Update these styles */
         .overview-text {
             max-width: 1000px;
@@ -682,7 +421,7 @@
 
         /* Enhance the gradient text */
         .gradient-text {
-            background: linear-gradient(45deg, #cc0000, #3399ff);
+            background: linear-gradient(45deg, #60c601, #323232);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -988,6 +727,7 @@
     <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
     <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
 </head>
+
 <body>
     <header>
         <nav>
@@ -1222,7 +962,8 @@
     <!-- Add BibTeX section -->
     <div class="bibtex-section" style="width: 100%; max-width: 1100px; margin: 40px auto; padding: 2px; background: rgba(0, 0, 0, 0.2); border-radius: 10px;">
         <h2 style="font-family: 'Orbitron', sans-serif; color: #ffffff; margin-bottom: 20px; text-align: center;">BibTeX</h2>
-        <pre style="background: #2a2a2a; padding: 20px; border-radius: 8px; overflow-x: auto; color: #ffffff; font-family: 'Roboto Mono', monospace; font-size: 14px; line-height: 1.5;"><code>@article{chen2025just,
+        <pre style="background: #2a2a2a; padding: 20px; border-radius: 8px; overflow-x: auto; color: #ffffff; font-family: 'Roboto Mono', monospace; font-size: 14px; line-height: 1.5;"><code>
+            @article{chen2025just,
             title={Just Noticeable Difference for Large Multimodal Models},
             author={Zijian Chen and Yuan Tian and Yuze Sun and Wei Sun and Zicheng Zhang and Weisi Lin and Guangtao Zhai and Wenjun Zhang},
             journal={arXiv preprint arXiv:2507.00490},
