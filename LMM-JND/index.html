@@ -918,6 +918,14 @@
             <b>Metrics.</b> (1) <b>Safety grounding</b>, which denotes the ability to identify the correct policy violation in the video. This is measured by the accuracy (averaged per-category and per-split), F1 Score for multi-label prediction, and AUPRC by framing the guardrail task as a binary classification problem. (2) <b>Explanation quality</b>, which denotes the correctness and policy adherence of the guardrail explanations. We consider both GPT-4o as a judge and human evaluators, where we provide them with the video and the ground-truth response, and ask them to provide a rating ranging from 0 to 10. (3) <b>Inference latency</b>, which is measured by the average time (in seconds) between sending the guardrail request and receiving the response.
         </div>
 
+        <div class="image-container">
+            <div class="centered-title" style="font-size: 19px;">Evaluation Models</div>
+            <img src="figures/baselines.png" alt="baselines">
+            <div class="caption">
+              We select 5 representative LMMs series including Qwen2.5-VL, DeepSeek-VL2, InternVL2.5, Qwen2-VL, and LLaVA-OneVision, as well as the currently smallest vision-language model, SmolVLM-256M, for evaluation. These LMMs not only vary in their vision architectures, such as QwenViT vs. SigLIP with different number of parameters (675M vs. 400M) and input sizes (224x224 vs. 384x384), but also in their language backbones (Qwen2.5 vs. DeepSeekMoE) and scales (72B vs. 16B). In addition to the 16 open-source models listed in the above Table, we also include 4 mainstream proprietary LMMs, i.e., GPT-4o (2024-11-20), Gemini (2.0 Flash and 1.5 Pro), and Qwen-VL-Max (2024-11-19) for evaluation. All models natively support multi-image inputs to ensure the best performance. 
+            </div>
+        </div>
+
         <!-- Overall Performance Figure -->
         <div class="image-container">
             <div class="centered-title" style="font-size: 19px;">The Minimal Perceptible Distortion Level</div>
