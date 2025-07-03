@@ -1471,15 +1471,14 @@
     <header>
         <nav>
             <div class="logo">
-                <img src="images/logo.png" alt="SafeWatch Logo">
+                <img src="images/icon-lmm-jnd.png" alt="LMM-JND Logo">
                 <span>SafeWatch</span>
             </div>
             <div class="nav-links">
                 <a href="https://arxiv.org/pdf/2507.00490">Paper</a>
-                <a href="#presentation">Code</a>
+                <a href="https://github.com/zijianchen98/LMM-JND">Code</a>
                 <!-- <a href="#demo" onclick="showDatasetAlert()">Dataset</a> -->
-                <a href="https://huggingface.co/datasets/Zhaorun/SafeWatch-Bench">Dataset</a>
-                <a href="#video-demos" onclick="scrollToSeeDemos(event)">Demos</a>
+               <!-- <a href="https://huggingface.co/datasets/Zhaorun/SafeWatch-Bench">Dataset</a> -->
                 <a href="https://www.alphaxiv.org/abs/2507.00490">Alphaxiv Community</a>
             </div>
         </nav>
@@ -1487,17 +1486,17 @@
 
     <div class="main-content">
         <div class="main-title">
-            <img src="images/logo.png" alt="SafeWatch Logo" class="main-logo">
+            <img src="images/icon-lmm-jnd.png" alt="LMM-JND Logo" class="main-logo">
             <h1>LMM-JND</h1>
         </div>
         <h2>Just Noticeable Difference for Large Multimodal Models</h2>
         
         <p class="authors">
-            Zhaorun Chen<sup>1</sup>, Francesco Pinto<sup>1</sup>, Minzhou Pan<sup>2</sup>, Bo Li<sup>1,2,3</sup>
+            Zijian Chen<sup>1,2</sup>, Yuan Tian<sup>1,2</sup>, Yuze Sun<sup>1</sup>, Wei Sun<sup>3</sup>, Zicheng Zhang<sup>1,2</sup>, Weisi Lin<sup>4</sup>, Guangtao Zhai<sup>1,2</sup>, Wenjun Zhang<sup>1</sup>
         </p>
 
         <div class="affiliations">
-            <p><sup>1</sup>University of Chicago, <sup>2</sup>Virtue AI, <sup>3</sup>University of Illinois, Urbana-Champaign</p>
+            <p><sup>1</sup>Shanghai Jiao Tong University, <sup>2</sup>Shanghai AI Laboratory, <sup>3</sup>East China Normal University, <sup>4</sup>Nanyang Technological University</p>
         </div>
 
         <div class="conference">
@@ -1508,7 +1507,7 @@
             <button class="button" onclick="window.open('https://arxiv.org/pdf/2507.00490', '_blank')">Read Paper</button>
             <button class="button" onclick="window.open('https://github.com/zijianchen98/LMM-JND/', '_blank')">Code Repo</button>
             <!-- <button class="button" onclick="showDatasetAlert()">Request Dataset</button> -->
-            <button class="button" onclick="window.open('https://huggingface.co/datasets/Zhaorun/SafeWatch-Bench', '_blank')">Dataset</button>
+           <!-- <button class="button" onclick="window.open('https://huggingface.co/datasets/Zhaorun/SafeWatch-Bench', '_blank')">Dataset</button> -->
         </div>
 
         <div class="overview-section">
@@ -1526,7 +1525,7 @@
                         <div class="key-features">
                             <div class="feature">
                                 <div class="feature-header">
-                                    <img src="images/logo.png" class="feature-logo" alt="SafeWatch Logo">
+                                    <img src="images/icon-lmm-jnd.png" class="feature-logo" alt="LMM-JND Logo">
                                     <span class="feature-text" style="cursor: pointer;" onclick="scrollToSection('model-architecture')">SafeWatch Video Guardrail</span>
                                 </div>
 
@@ -1535,7 +1534,7 @@
                                 <p style="font-size: 13px;">(3) <strong>Advanced Training</strong> for accurate guardrail and grounded explanation for both real-world and generative videos.</p>
                             </div>
                             <div class="feature">
-                                <span class="feature-text" style="cursor: pointer;" onclick="scrollToSection('dataset-section')">📊 SafeWatch-Bench Dataset&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                <span class="feature-text" style="cursor: pointer;" onclick="scrollToSection('dataset-section')">📊 VPA-JND Dataset&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                                 <p style="font-size: 13px;">(1) <strong>Large & High-quality:</strong> Contain 2M+ videos annotated in high quality by multi-agent LLMs;</p>
                                 <p style="font-size: 13px;">(2) <strong>Comprehensive Coverage:</strong> Cover 6 policy categories and over 30 safety-related scenarios;</p>
                                 <p style="font-size: 13px;">(3) <strong>Real-world and GenAI:</strong> Cover challenging videos produced in both real-world settings and various generative models.</p>
@@ -1552,79 +1551,7 @@
             </div>
         </div>
 
-        <!-- See Demos Button moved above -->
-        <div class="see-demos-container" id="video-demos">
-            <button class="see-demos-button" id="seeDemosButton">Check out the demos🔥</button>
-        </div>
-
-        <!-- Main filter buttons moved below -->
-        <div class="filter-buttons">
-            <button class="filter-button active" data-filter="all">All</button>
-            <button class="filter-button" data-filter="benign">Benign</button>
-            <button class="filter-button" data-filter="sexual">Sexual</button>
-            <button class="filter-button" data-filter="abuse">Abuse</button>
-            <button class="filter-button" data-filter="violence">Violence</button>
-            <button class="filter-button" data-filter="misinformation">Misinformation</button>
-            <button class="filter-button" data-filter="illegal">Illegal</button>
-            <button class="filter-button" data-filter="extremism">Extremism</button>
-        </div>
-
-        <!-- Sub-filter buttons -->
-        <div class="sub-filter-container">
-            <!-- Sexual sub-filters -->
-            <div class="sub-filter-buttons sexual-sub-filters" style="display: none;">
-                <button class="sub-filter-button active" data-filter="sexual-all">All</button>
-                <button class="sub-filter-button" data-filter="sexual-evident">Evident</button>
-                <button class="sub-filter-button" data-filter="sexual-subtle">Subtle</button>
-                <button class="sub-filter-button" data-filter="sexual-implication">Implication</button>
-                <button class="sub-filter-button" data-filter="sexual-hentai">Hentai</button>
-            </div>
-
-            <!-- Abuse sub-filters -->
-            <div class="sub-filter-buttons abuse-sub-filters" style="display: none;">
-                <button class="sub-filter-button active" data-filter="abuse-all">All</button>
-                <button class="sub-filter-button" data-filter="abuse-animal">Animal Abuse</button>
-                <button class="sub-filter-button" data-filter="abuse-campus">Campus Bullying</button>
-                <button class="sub-filter-button" data-filter="abuse-child">Child Abuse</button>
-                <button class="sub-filter-button" data-filter="abuse-sexual">Sexual Abuse</button>
-            </div>
-
-            <!-- Violence sub-filters -->
-            <div class="sub-filter-buttons violence-sub-filters" style="display: none;">
-                <button class="sub-filter-button active" data-filter="violence-all">All</button>
-                <button class="sub-filter-button" data-filter="violence-assault">Assault</button>
-                <button class="sub-filter-button" data-filter="violence-fighting">Fighting</button>
-                <button class="sub-filter-button" data-filter="violence-shooting">Shooting</button>
-                <button class="sub-filter-button" data-filter="violence-sexual-violence">Sexual Violence</button>
-                <button class="sub-filter-button" data-filter="violence-vandalism">Vandalism</button>
-            </div>
-
-            <!-- Illegal sub-filters -->
-            <div class="sub-filter-buttons illegal-sub-filters" style="display: none;">
-                <button class="sub-filter-button active" data-filter="illegal-all">All</button>
-                <button class="sub-filter-button" data-filter="illegal-robbery">Robbery</button>
-                <button class="sub-filter-button" data-filter="illegal-shoplifting">Shoplifting</button>
-                <button class="sub-filter-button" data-filter="illegal-war">War Scenes</button>
-            </div>
-
-            <!-- Extremism sub-filters -->
-            <div class="sub-filter-buttons extremism-sub-filters" style="display: none;">
-                <button class="sub-filter-button active" data-filter="extremism-all">All</button>
-                <button class="sub-filter-button" data-filter="extremism-selfharm">Self-harm</button>
-                <button class="sub-filter-button" data-filter="extremism-disturbing">Disturbing</button>
-                <button class="sub-filter-button" data-filter="extremism-antisocial">Anti-social</button>
-                <button class="sub-filter-button" data-filter="extremism-depression">Depression</button>
-            </div>
-
-            <!-- Misinformation sub-filters -->
-            <div class="sub-filter-buttons misinformation-sub-filters" style="display: none;">
-                <button class="sub-filter-button active" data-filter="misinformation-all">All</button>
-                <button class="sub-filter-button" data-filter="misinformation-acting">Acting</button>
-                <button class="sub-filter-button" data-filter="misinformation-deepfake">Deepfake</button>
-                <button class="sub-filter-button" data-filter="misinformation-misinformation">Misinformation</button>
-                <button class="sub-filter-button" data-filter="misinformation-out-of-date">Out-of-date</button>
-            </div>
-        </div>
+  
 
 
         <!-- Dataset Section (part of video module, always visible) -->
