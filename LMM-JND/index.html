@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Just Noticeable Difference for Large Multimodal Models</title>
-    <link rel="icon" type="image/x-icon" href="figures/icon-lmmjnd.ico">
+    <link rel="icon" type="image/x-icon" href="figures/icon-lmm-jnd.ico">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600&display=swap');
@@ -40,7 +40,7 @@
         }
         .logo span {
             font-family: 'Orbitron', sans-serif;
-            background: linear-gradient(to right, #cc0000, #3399ff);
+            background: linear-gradient(to right, #60c601, #000000);     /* #cc0000, #3399ff */
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -72,7 +72,7 @@
             font-size: 64px;
             font-weight: 700;
             margin: 0;
-            background: linear-gradient(to right, #cc0000, #3399ff);
+            background: linear-gradient(to right, #60c601, #000000);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -1580,21 +1580,9 @@
         </div>
     </div>
 
-    <!-- Method Section (separate section) -->
-    <div class="method-section" id="model-architecture">
-        <div class="centered-title">SafeWatch Model Architecture</div>
-        <div class="image-container">
-            <img src="figures/pipeline331.jpg" alt="SafeWatch Method Overview">
-            <div class="caption">
-                The decoding pipeline of <b>SafeWatch</b>. Regarding <b>video input (left)</b>, <b>SafeWatch</b> leverages a segmentation model to process the input video into clips based on unsafe events. Then, it samples frames from each event and encodes them into patch tokens. Regarding <b>safety guidelines (right)</b>, <b>SafeWatch</b> encodes each policy in parallel with the equivalent <b>RoPE embedding</b> to ensure they are treated with equal importance. Then, for each policy, <b>SafeWatch</b> calculates the relevance score based on its cross-attention with the video tokens and then activates <b>Top-k</b> most informative tokens and prunes the rest. Finally, these tokens are concatenated with the query for decoding.
-            </div>
-        </div>
-    </div>
-
-
     <!-- Data Curation Section (separate section) -->
     <div class="data-curation-section">
-        <div class="centered-title">Data Curation and Training Pipeline</div>
+        <div class="centered-title">LMM-JND Determination Pipeline</div>
         <div class="image-container">
             <img src="figures/pipeline.png" alt="Pipeline">
             <div class="caption">
@@ -1691,7 +1679,7 @@
 
         <!-- Correlation with language/vision -->
         <div class="image-container">
-            <div class="centered-title" style="font-size: 19px;">1st JND vs. Parameter Ratio (L/V)</div>
+            <div class="centered-title" style="font-size: 19px;">1st JND vs. Parameter Ratio (L / V)</div>
             <img src="figures/scatter-ratio-new.jpg" alt="1st-jnd vs. Param.">
             <div class="caption">
                 1st JND versus the parameter ratio of the language backbone (Param.L) to the visual backbone (Param.V). The red dotted curves show the fitted optimization direction of the perception granularity for large models (72B/78B).
