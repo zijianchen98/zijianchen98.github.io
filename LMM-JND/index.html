@@ -348,8 +348,8 @@
             overflow: hidden;
         }
 
-        /* SafeWatch-Bench Section Styles */
-        .safewatch-bench {
+        /* LMM-JND-bench Section Styles */
+        .LMM-JND-bench {
             background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
             padding: 80px 0;
             text-align: center;
@@ -357,7 +357,7 @@
             overflow: hidden;
         }
 
-        .safewatch-bench::before {
+        .LMM-JND-bench::before {
             content: '';
             position: absolute;
             top: 0;
@@ -369,7 +369,7 @@
             z-index: 1;
         }
 
-        .safewatch-bench h2 {
+        .LMM-JND-bench h2 {
             font-family: 'Orbitron', sans-serif;
             font-size: 48px;
             color: #ffffff;
@@ -378,7 +378,7 @@
             z-index: 2;
         }
 
-        .safewatch-bench p {
+        .LMM-JND-bench p {
             font-family: 'Raleway', sans-serif;
             font-size: 18px;
             color: #cccccc;
@@ -410,15 +410,15 @@
         }
 
         @media (max-width: 768px) {
-            .safewatch-bench {
+            .LMM-JND-bench {
                 padding: 60px 20px;
             }
 
-            .safewatch-bench h2 {
+            .LMM-JND-bench h2 {
                 font-size: 36px;
             }
 
-            .safewatch-bench p {
+            .LMM-JND-bench p {
                 font-size: 16px;
             }
         }
@@ -521,71 +521,6 @@
             line-height: 1.6;
         }
 
-        /* Video module container */
-        .video-module {
-            width: 100%;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 20px;
-            min-height: 1000px;
-        }
-
-        .video-container {
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 10px;
-            padding: 20px;
-        }
-
-        .video-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        .video-item {
-            position: relative;
-            background: #000;
-            border-radius: 8px;
-            overflow: hidden;
-        }
-
-        .video-item video {
-            width: 100%;
-            height: auto;
-            object-fit: contain;
-            display: block;
-        }
-
-        .flag {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            background: red;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 4px;
-            font-size: 14px;
-            z-index: 2;
-        }
-
-        .video-caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(0, 0, 0, 0.7);
-            color: white;
-            padding: 10px;
-        }
-
-        .video-caption p {
-            margin: 5px 0;
-            font-size: 14px;
-        }
-
-        .video-caption strong {
-            color: #ccc;
-        }
 
         /* Dataset info section (always visible, no blur) */
         .dataset-info {
@@ -641,179 +576,6 @@
             background: #333;
             color: white;
             cursor: pointer;
-        }
-
-        .filter-button.active {
-            background: #cc0000;
-        }
-
-        .sub-filter-container {
-            margin: 10px 0;
-            text-align: center;
-        }
-
-        .sub-filter-buttons {
-            display: none;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .sub-filter-button {
-            padding: 6px 12px;
-            border: none;
-            border-radius: 4px;
-            background: #444;
-            color: white;
-            cursor: pointer;
-        }
-
-        .sub-filter-button.active {
-            background: #cc0000;
-        }
-
-        /* Add different sizes for variety */
-        .video-item.wide {
-            width: calc(66.666% - 20px); /* 2x width */
-        }
-
-        .video-item.tall video {
-            /* Remove aspect-ratio: 9/16; */
-        }
-
-        .video-item.wide video {
-            /* Remove aspect-ratio: 21/9; */
-        }
-
-        .flag-sexual-hentai {
-            background: linear-gradient(135deg, #ff69b4, #ff1493);
-        }
-
-        .flag-abuse-animal {
-            background: linear-gradient(135deg, #8B0000, #FF4500);
-        }
-
-        .flag-abuse-campus {
-            background: linear-gradient(135deg, #FF4500, #FF8C00);
-        }
-
-        .flag-abuse-child {
-            background: linear-gradient(135deg, #8B0000, #DC143C);
-        }
-
-        .flag-abuse-sexual {
-            background: linear-gradient(135deg, #800080, #FF1493);
-        }
-
-        .flag-violence-assault {
-            background: linear-gradient(135deg, #FF0000, #FF4500);
-        }
-
-        .flag-violence-fighting {
-            background: linear-gradient(135deg, #FF4500, #FF8C00);
-        }
-
-        .flag-violence-shooting {
-            background: linear-gradient(135deg, #8B0000, #DC143C);
-        }
-
-        .flag-violence-sexual-violence {
-            background: linear-gradient(135deg, #800080, #FF1493);
-        }
-
-        .flag-violence-vandalism {
-            background: linear-gradient(135deg, #FF6347, #FF4500);
-        }
-
-        .flag-illegal-robbery {
-            background: linear-gradient(135deg, #8B0000, #FF4500);
-        }
-
-        .flag-illegal-shoplifting {
-            background: linear-gradient(135deg, #FF6347, #FF8C00);
-        }
-
-        .flag-illegal-war {
-            background: linear-gradient(135deg, #8B0000, #DC143C);
-        }
-
-        .flag-extremism-selfharm {
-            background: linear-gradient(135deg, #800000, #FF4500);
-        }
-
-        .flag-extremism-disturbing {
-            background: linear-gradient(135deg, #4B0082, #8B0000);
-        }
-
-        .flag-extremism-antisocial {
-            background: linear-gradient(135deg, #2F4F4F, #4A4A4A);
-        }
-
-        .flag-extremism-depression {
-            background: linear-gradient(135deg, #483D8B, #4682B4);
-        }
-
-        .flag-misinformation-acting {
-            background: linear-gradient(135deg, #FFA500, #FF8C00);
-        }
-
-        .flag-misinformation-deepfake {
-            background: linear-gradient(135deg, #00008B, #0000FF);
-        }
-
-        .flag-misinformation-misinformation {
-            background: linear-gradient(135deg, #FF0000, #FF4500);
-        }
-
-        .flag-misinformation-out-of-date {
-            background: linear-gradient(135deg, #808080, #FFFFFF);
-        }
-
-        .see-demos-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 40px 0; /* Increased margin */
-        }
-
-        .see-demos-button {
-            padding: 15px 40px; /* Larger padding */
-            background: linear-gradient(45deg, #cc0000, #ff3333);
-            color: #ffffff;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 1.3em;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(204, 0, 0, 0.3);
-            animation: buttonPulse 2s infinite;
-        }
-
-        .see-demos-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(204, 0, 0, 0.5);
-            background: linear-gradient(45deg, #ff3333, #ff6666);
-        }
-
-        .see-demos-button::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(
-                45deg,
-                transparent,
-                rgba(255, 255, 255, 0.1),
-                transparent
-            );
-            transform: rotate(45deg);
-            animation: shimmer 3s infinite;
         }
 
         /* Animations */
@@ -1238,7 +1000,7 @@
             margin-top: -4px; /* Add space before the description */
         }
 
-        /* Keep the first feature (SafeWatch Model) as is */
+        /* Keep the first feature (LMM-JND Model) as is */
         .feature:first-child .feature-text {
             margin-bottom: 5px; /* Original spacing */
         }
@@ -1472,13 +1234,13 @@
         <nav>
             <div class="logo">
                 <img src="figures/icon-lmm-jnd.png" alt="LMM-JND Logo">
-                <span>SafeWatch</span>
+                <span>LMM-JND</span>
             </div>
             <div class="nav-links">
                 <a href="https://arxiv.org/pdf/2507.00490">Paper</a>
                 <a href="https://github.com/zijianchen98/LMM-JND">Code</a>
                 <!-- <a href="#demo" onclick="showDatasetAlert()">Dataset</a> -->
-               <!-- <a href="https://huggingface.co/datasets/Zhaorun/SafeWatch-Bench">Dataset</a> -->
+               <!-- <a href="https://huggingface.co/datasets/Zhaorun/LMM-JND-bench">Dataset</a> -->
                 <a href="https://www.alphaxiv.org/abs/2507.00490">Alphaxiv Community</a>
             </div>
         </nav>
@@ -1507,7 +1269,7 @@
             <button class="button" onclick="window.open('https://arxiv.org/pdf/2507.00490', '_blank')">Read Paper</button>
             <button class="button" onclick="window.open('https://github.com/zijianchen98/LMM-JND/', '_blank')">Code Repo</button>
             <!-- <button class="button" onclick="showDatasetAlert()">Request Dataset</button> -->
-           <!-- <button class="button" onclick="window.open('https://huggingface.co/datasets/Zhaorun/SafeWatch-Bench', '_blank')">Dataset</button> -->
+           <!-- <button class="button" onclick="window.open('https://huggingface.co/datasets/Zhaorun/LMM-JND-bench', '_blank')">Dataset</button> -->
         </div>
 
         <div class="overview-section">
@@ -1517,16 +1279,16 @@
                         <p class="highlight-text">
                             <strong class="overview-label">Overview:</strong> With the wide adoption of generative AI and rapid growth of high-quality video
                             generation, video guardrails have become more crucial than ever to ensure safety
-                            and security across platforms. We introduce <strong>SafeWatch</strong>, an efficient MLLM-based video guardrail
-                            model designed to follow customized safety policies and provide multi-label video guardrail outputs with content-specific explanations. Specifically, <strong>SafeWatch</strong> incorporates two powerful modules to tackle the high inference latency and policy bias under lengthy safety guidelines input, ensuring a focused, policy-compliant
-                            guardrail with significantly reduced computational overhead. In addition, we introduce <strong>SafeWatch-Bench</strong>, a large-scale high-quality video guardrail dataset covering over 30 comprehensive unsafe video scenarios for training and benchmark our model.
+                            and security across platforms. We introduce <strong>LMM-JND</strong>, an efficient MLLM-based video guardrail
+                            model designed to follow customized safety policies and provide multi-label video guardrail outputs with content-specific explanations. Specifically, <strong>LMM-JND</strong> incorporates two powerful modules to tackle the high inference latency and policy bias under lengthy safety guidelines input, ensuring a focused, policy-compliant
+                            guardrail with significantly reduced computational overhead. In addition, we introduce <strong>LMM-JND-bench</strong>, a large-scale high-quality video guardrail dataset covering over 30 comprehensive unsafe video scenarios for training and benchmark our model.
                         </p>
                         
                         <div class="key-features">
                             <div class="feature">
                                 <div class="feature-header">
                                     <img src="images/icon-lmm-jnd.png" class="feature-logo" alt="LMM-JND Logo">
-                                    <span class="feature-text" style="cursor: pointer;" onclick="scrollToSection('model-architecture')">SafeWatch Video Guardrail</span>
+                                    <span class="feature-text" style="cursor: pointer;" onclick="scrollToSection('model-architecture')">LMM-JND Video Guardrail</span>
                                 </div>
 
                                 <p style="font-size: 13px;">(1) <strong>Strong policy-following</strong> to provide multi-label guardrail flags with precise explanations.</p>
@@ -1541,9 +1303,9 @@
                             </div>
                             <div class="feature">
                                 <span class="feature-text" style="cursor: pointer;" onclick="scrollToSection('main-results')">🎯 Comprehensive Evaluation&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                <p style="font-size: 13px;">(1) <strong>SafeWatch-Bench:</strong> On both real-world and generative video subset, SafeWatch outperforms SOTAs by 29.2% and 27.2% on average;</p>
-                                <p style="font-size: 13px;">(2) <strong>Existing Guardrail Tasks:</strong> On 5 existing benchmarks, SafeWatch achieves 87.1% accuracy;</p>
-                                <p style="font-size: 13px;">(3) <strong>Unseen Tasks:</strong> On 8 new video categories or prompting tasks, SafeWatch has high accuracy.</p>
+                                <p style="font-size: 13px;">(1) <strong>LMM-JND-bench:</strong> On both real-world and generative video subset, LMM-JND outperforms SOTAs by 29.2% and 27.2% on average;</p>
+                                <p style="font-size: 13px;">(2) <strong>Existing Guardrail Tasks:</strong> On 5 existing benchmarks, LMM-JND achieves 87.1% accuracy;</p>
+                                <p style="font-size: 13px;">(3) <strong>Unseen Tasks:</strong> On 8 new video categories or prompting tasks, LMM-JND has high accuracy.</p>
                             </div>
                         </div>
                     </div>
@@ -1570,8 +1332,8 @@
                     (3) Include challenging benign examples (borderline-safe videos) to maintain low false positive rate and improve model robustness.
                     <br>
                     &nbsp;&nbsp;&nbsp;&nbsp;<b>• Generative Subset:</b> Features high-quality unsafe videos generated by SOTA models:
-                    (1) Text-to-Video: generated using curated unsafe prompts from SafeWatch-Bench-Real captions and existing unsafe prompt datasets (e.g. I2P);
-                    (2) Image-to-Video: generated from SafeWatch-Bench-Real screenshots and existing unsafe image datasets; 
+                    (1) Text-to-Video: generated using curated unsafe prompts from LMM-JND-bench-Real captions and existing unsafe prompt datasets (e.g. I2P);
+                    (2) Image-to-Video: generated from LMM-JND-bench-Real screenshots and existing unsafe image datasets; 
                     (3) Significantly higher quality and better alignment with sophisticated unsafe scenarios compared to existing datasets. <br>
 
                     <b>Annotation:</b> Each video is annotated with <b>multi-label guardrail flags</b> and <b>in-depth explanations</b> through our <b>multi-agent propose-discuss consensus pipeline</b>, ensuring comprehensive coverage while maintaining exceptional annotation quality.
@@ -1586,7 +1348,7 @@
         <div class="image-container">
             <img src="figures/pipeline.png" alt="Pipeline">
             <div class="caption">
-                An overview of <b>SafeWatch</b>. During <b>data curation (top)</b>, we annotate each video in <b>SafeWatch-Bench</b> with high-quality multi-label guardrail and explanation via a <b>multi-agent propose-discuss consensus pipeline</b>, i.e., we guide multiple MLLMs to iteratively improve their annotation for each video frame to reach consensus with each other. During <b>training (bottom-left)</b>, <b>SafeWatch</b> distills knowledge from <b>SafeWatch-Bench</b> via three consecutive training stages to improve 1) the overall guardrail performance, 2) the adaptability to visual token pruning, and 3) the quality of explanation, separately. During <b>inference (bottom-right)</b>, <b>SafeWatch</b> judges videos for safety alignment with a customized policy providing a description, guardrail, and explanation.
+                An overview of <b>LMM-JND</b>. During <b>data curation (top)</b>, we annotate each video in <b>LMM-JND-bench</b> with high-quality multi-label guardrail and explanation via a <b>multi-agent propose-discuss consensus pipeline</b>, i.e., we guide multiple MLLMs to iteratively improve their annotation for each video frame to reach consensus with each other. During <b>training (bottom-left)</b>, <b>LMM-JND</b> distills knowledge from <b>LMM-JND-bench</b> via three consecutive training stages to improve 1) the overall guardrail performance, 2) the adaptability to visual token pruning, and 3) the quality of explanation, separately. During <b>inference (bottom-right)</b>, <b>LMM-JND</b> judges videos for safety alignment with a customized policy providing a description, guardrail, and explanation.
             </div>
         </div>
     </div>
@@ -1633,7 +1395,7 @@
                 <h2>📢 Demo Notice</h2>
             </div>
             <div class="modal-body">
-                <p>We will host SafeWatch model online for you to try on HuggingFace Space soon! <br> Feel free to play with some demos on this page first! Stay tuned!</p>
+                <p>We will host LMM-JND model online for you to try on HuggingFace Space soon! <br> Feel free to play with some demos on this page first! Stay tuned!</p>
             </div>
             <div class="modal-footer">
                 <button class="modal-button confirm-btn" onclick="closeModal('demoModal')">Got it!</button>
@@ -1652,7 +1414,7 @@
             <div class="left-title" style="font-size: 19px;">Experiment Setup</div>
             <b>Baselines.</b> Open-source: (1) most recent models specifically designed for guardrail tasks, i.e., LlavaGuard-34B, Holmes-VAD, and LLamaGuard3V-11B. (2) two powerful pre-trained MLLMs, i.e., InternVL2-8B and InternVL2-26B. Closed-source: the most advanced models available: GPT-4o, Gemini-1.5 Pro, and the Azure Video Content Moderation API.
             <br><br>
-            <b>Datasets.</b> We evaluate and compare these guardrail models on (1) the high-quality test set of <b>SAFEWATCH-BENCH-Real</b> (830) and <b>SAFEWATCH-BENCH-GenAI</b> (590), covering both real-world and generative videos of six safety categories over 30 scenarios (2) Splits of five existing datasets, i.e., LSPD, XD-Violence, UCF, Fake-SV, FVC. (3) Generalizability to new policy categories: three unseen tasks during training, including children's safety, firearms, and road accidents.
+            <b>Datasets.</b> We evaluate and compare these guardrail models on (1) the high-quality test set of <b>LMM-JND-bench-Real</b> (830) and <b>LMM-JND-bench-GenAI</b> (590), covering both real-world and generative videos of six safety categories over 30 scenarios (2) Splits of five existing datasets, i.e., LSPD, XD-Violence, UCF, Fake-SV, FVC. (3) Generalizability to new policy categories: three unseen tasks during training, including children's safety, firearms, and road accidents.
             <br><br>
             <b>Metrics.</b> (1) <b>Safety grounding</b>, which denotes the ability to identify the correct policy violation in the video. This is measured by the accuracy (averaged per-category and per-split), F1 Score for multi-label prediction, and AUPRC by framing the guardrail task as a binary classification problem. (2) <b>Explanation quality</b>, which denotes the correctness and policy adherence of the guardrail explanations. We consider both GPT-4o as a judge and human evaluators, where we provide them with the video and the ground-truth response, and ask them to provide a rating ranging from 0 to 10. (3) <b>Inference latency</b>, which is measured by the average time (in seconds) between sending the guardrail request and receiving the response.
         </div>
@@ -1721,7 +1483,7 @@
         <div class="overview-section" style="margin-bottom: 60px; background: #1a1a1a; padding: 20px;">  <!-- Adjusted padding and margin -->
             <div class="overview-content">
                 <p class="highlight-text" style="text-align: left; font-size: 14px; margin: 0;">  <!-- Removed margin from text -->
-                This page is based on a template by SafeWatch
+                This page is based on a template by LMM-JND
                 </p>
             </div>
         </div>
