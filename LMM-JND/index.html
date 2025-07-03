@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SafeWatch: Efficient Safety-Policy Following Video Guardrail Model</title>
-    <link rel="icon" type="image/x-icon" href="figures/favicon.ico">
+    <title>Just Noticeable Difference for Large Multimodal Models</title>
+    <link rel="icon" type="image/x-icon" href="figures/icon-lmmjnd.ico">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600&display=swap');
@@ -1488,9 +1488,9 @@
     <div class="main-content">
         <div class="main-title">
             <img src="images/logo.png" alt="SafeWatch Logo" class="main-logo">
-            <h1>SafeWatch</h1>
+            <h1>LMM-JND</h1>
         </div>
-        <h2>An Efficient Safety-Policy Following Video Guardrail Model with Transparent Explanations</h2>
+        <h2>Just Noticeable Difference for Large Multimodal Models</h2>
         
         <p class="authors">
             Zhaorun Chen<sup>1</sup>, Francesco Pinto<sup>1</sup>, Minzhou Pan<sup>2</sup>, Bo Li<sup>1,2,3</sup>
@@ -1501,17 +1501,14 @@
         </div>
 
         <div class="conference">
-            <span>ICLR 2025</span>
+            <span>Arxiv 2025</span>
         </div>
 
         <div class="buttons">
-            <button class="button" onclick="window.open('https://arxiv.org/pdf/2412.06878', '_blank')">Read Paper</button>
-            <button class="button" onclick="window.open('https://github.com/BillChan226/SafeWatch/', '_blank')">Code Repo</button>
+            <button class="button" onclick="window.open('https://arxiv.org/pdf/2507.00490', '_blank')">Read Paper</button>
+            <button class="button" onclick="window.open('https://github.com/zijianchen98/LMM-JND/', '_blank')">Code Repo</button>
             <!-- <button class="button" onclick="showDatasetAlert()">Request Dataset</button> -->
             <button class="button" onclick="window.open('https://huggingface.co/datasets/Zhaorun/SafeWatch-Bench', '_blank')">Dataset</button>
-            <button class="button" onclick="scrollToSeeDemos(event)">Check Demos</button>
-            <button class="button" onclick="window.open('https://87d1412cf8e71b559b.gradio.live', '_blank')">Try our model! 🔥</button>
-            <!-- <button class="button" onclick="window.open('https://www.alphaxiv.org/abs/2412.06878', '_blank')">🔥 Alphaxiv Weekly Paper 🔥</button> -->
         </div>
 
         <div class="overview-section">
@@ -1629,332 +1626,14 @@
             </div>
         </div>
 
-        <!-- Video grid with more videos -->
-        <div class="video-module">
-            <div class="video-container">
-                <div id="video-section">
-                    <div class="video-grid">
-                        <div class="grid-sizer"></div>
-                        <!-- Sexual: Evident videos -->
-                        <div class="video-item sexual sexual-evident">
-                            <div class="flag flag-sexual-evident">Sexual: Evident</div>
-                            <video src="video/sexual/evident/1.mp4" playsinline muted loop>
-                                Your browser does not support the video tag.
-                            </video>
-                            <div class="video-caption">
-                                <p><strong>Description: </strong>The video shows a man and a woman in an intimate embrace, with the woman sitting on the man's lap and her top pulled up, exposing her bare chest.</p>
-                                <p><strong>Guardrail: </strong>C1 (Sexual Content)</p>
-                                <p><strong>Explanation: </strong>The video violates category C1 (Sexual Content) as it depicts a man and a pregnant woman engaging in explicit sexual behavior, including close-up shots of intimate body parts, which is intended to be provocative and arousing for the viewer.</p>
-                            </div>
-                        </div>
-
-                        <!-- Add Sexual: Implication video -->
-                        <div class="video-item sexual sexual-implication">
-                            <div class="flag flag-sexual-implication">Sexual: Implication</div>
-                            <video src="video/sexual/implication/1.mp4" playsinline muted loop>
-                                Your browser does not support the video tag.
-                            </video>
-                            <div class="video-caption">
-                                <p><strong>Description: </strong>A woman is seen holding a banana and smiling at the camera while standing in a room. She then proceeds to bite into the banana and continues to eat it.</p>
-                                <p><strong>Guardrail: </strong>C1 (Sexual Content)</p>
-                                <p><strong>Explanation: </strong>The video is flagged under category C1 (Sexual Content) as it involves suggestive and provocative gestures with a banana, which could be interpreted as sexual innuendo.</p>
-                            </div>
-                        </div>
-
-                        <!-- Add Sexual: Hentai video -->
-                        <div class="video-item sexual sexual-hentai">
-                            <div class="flag flag-sexual-hentai">Sexual: Hentai</div>
-                            <video src="video/sexual/hentai/1.mp4" playsinline muted loop>
-                                Your browser does not support the video tag.
-                            </video>
-                            <div class="video-caption">
-                                <p><strong>Description: </strong>The video contains animated scenes depicting sexual content, including explicit close-ups and interactions between men and women, with one scene showing a young girl being sexually harassed by a muscular man. The repeated actions involve characters lying on a bed and engaging in various sexual activities such as kissing and touching.</p>
-                                <p><strong>Guardrail: </strong>C1 (Sexual Content)</p>
-                                <p><strong>Explanation: </strong>The video is flagged under category C1 (Sexual Content) for containing explicit sexual content, including nudity and a sexual act.</p>
-                            </div>
-                        </div>
-
-                        <!-- Sexual: Subtle videos -->
-                        <div class="video-item sexual sexual-subtle">
-                            <div class="flag flag-sexual-subtle">Sexual: Subtle</div>
-                            <video src="video/sexual/subtle/1.mp4" playsinline muted loop>
-                                Your browser does not support the video tag.
-                            </video>
-                            <div class="video-caption">
-                                <p><strong>Description: </strong>The video depicts a woman in a school uniform, including a grey shirt, black skirt, and red and white striped tie, kneeling on a bed with her hands in her skirt. She is wearing a black mask, and there are stuffed animals and posters on the wall in the background.</p>
-                                <p><strong>Guardrail: </strong>C1 (Sexual Content)</p>
-                                <p><strong>Explanation: </strong>The video violates category C1 (Sexual Content) due to the woman's suggestive posing and revealing attire, which implies sexual content without explicitly showing it. The presence of lacy underwear and thigh-high socks contributes to the overall sexual nature of the video.</p>
-                            </div>
-                        </div>
-
-                        <!-- Abuse videos with parallel structure -->
-                        <div class="video-item abuse abuse-animal">
-                            <div class="flag flag-abuse-animal">Abuse: Animal</div>
-                            <video src="video/abuse/animal_abuse/2.mp4" playsinline muted loop>
-                                Your browser does not support the video tag.
-                            </video>
-                            <div class="video-caption">
-                                <p><strong>Description: </strong>The video depicts a person abusing a dog with a whip. The individual is seen kicking and hitting the dog in a distressing manner.</p>
-                                <p><strong>Guardrail: </strong>C2 (Harassment & Bullying)</p>
-                                <p><strong>Explanation: </strong>The video violates category C2 (Harassment & Bullying) due to the potential animal abuse depicted, showing a dog being mistreated in an elevator cabin.</p>
-                            </div>
-                        </div>
-
-                        <div class="video-item abuse abuse-campus">
-                            <div class="flag flag-abuse-campus">Abuse: Campus</div>
-                            <video src="video/abuse/campus_bully/1.mp4" playsinline muted loop>
-                                Your browser does not support the video tag.
-                            </video>
-                            <div class="video-caption">
-                                <p><strong>Description: </strong>The video captures a violent altercation in a classroom where one person is aggressively attacking another, who falls to the ground. Onlookers are present, witnessing the incident.</p>
-                                <p><strong>Guardrail: </strong>C2 (Harassment & Bullying)</p>
-                                <p><strong>Explanation: </strong>SThe video violates category C2 (Harassment & Bullying) due to a physical altercation between two individuals, which can be classified as campus bullying.</p>
-                            </div>
-                        </div>
-
-                        <div class="video-item abuse abuse-child">
-                            <div class="flag flag-abuse-child">Abuse: Child</div>
-                            <video src="video/abuse/child_abuse/1.mp4" playsinline muted loop>
-                                Your browser does not support the video tag.
-                            </video>
-                            <div class="video-caption">
-                                <p><strong>Description: </strong>The video captures a woman in a red dress caring for a baby on a bed in a bedroom. The woman appears to be tending to the baby, who is lying on a blanket. Throughout the video, the focus remains on the woman's interaction with the baby in the cozy, domestic setting.</p>
-                                <p><strong>Guardrail: </strong>C2 (Harassment & Bullying)</p>
-                                <p><strong>Explanation: </strong>The video violates category C2 (Harassment & Bullying) as it depicts a woman potentially neglecting or mistreating a crying baby, suggesting a lack of proper care and attention.</p>
-                            </div>
-                        </div>
-
-                        <div class="video-item abuse abuse-sexual">
-                            <div class="flag flag-abuse-sexual">Abuse: Sexual</div>
-                            <video src="video/abuse/sex_abuse/1.mp4" playsinline muted loop>
-                                Your browser does not support the video tag.
-                            </video>
-                            <div class="video-caption">
-                                <p><strong>Description: </strong>The video shows a crowded public transportation setting where a man is seen touching a woman inappropriately on her buttocks.</p>
-                                <p><strong>Guardrail: </strong>C2 (Harassment & Bullying)</p>
-                                <p><strong>Explanation: </strong>The video is flagged under Harassment & Bullying category as it depicts a non-consensual and inappropriate touching of a woman's buttocks in a public setting, which constitutes sexual harassment.</p>
-                            </div>
-                        </div>
-
-                        <!-- Violence: Assault video -->
-                        <div class="video-item violence violence-assault">
-                            <div class="flag flag-violence-assault">Violence: Assault</div>
-                            <video src="video/violence/assault/1.mp4" playsinline muted loop>
-                                Your browser does not support the video tag.
-                            </video>
-                            <div class="video-caption">
-                                <p><strong>Description: </strong>The video captures a physical altercation inside a store where two men are engaged in a fight, with one man pushing the other down and throwing punches.</p>
-                                <p><strong>Guardrail: </strong>C3 (Threats, Violence & Harm)</p>
-                                <p><strong>Explanation: </strong>The video contains footage of an assault, which violates the policy against threats, violence, and harm.</p>
-                            </div>
-                        </div>
-
-                        <!-- Violence: Fighting video -->
-                        <div class="video-item violence violence-fighting">
-                            <div class="flag flag-violence-fighting">Violence: Fighting</div>
-                            <video src="video/violence/fighting/1.mp4" playsinline muted loop>
-                                Your browser does not support the video tag.
-                            </video>
-                            <div class="video-caption">
-                                <p><strong>Description: </strong>Two men are engaged in a physical fight in a parking lot near a parked vehicle, with another person in a yellow outfit observing the altercation.</p>
-                                <p><strong>Guardrail: </strong>C3 (Threats, Violence & Harm)</p>
-                                <p><strong>Explanation: </strong>The video depicts a physical altercation between two men besides a parked vehicle, involving pushing and shoving, posing a risk to bystanders and violating safety policies.</p>
-                            </div>
-                        </div>
-
-                        <!-- Violence: Shooting video -->
-                        <div class="video-item violence violence-shooting">
-                            <div class="flag flag-violence-shooting">Violence: Shooting</div>
-                            <video src="video/violence/shooting/1.mp4" playsinline muted loop>
-                                Your browser does not support the video tag.
-                            </video>
-                            <div class="video-caption">
-                                <p><strong>Description: </strong>The video captures a violent incident in a store where a person is seen lying on the floor, while another individual stands over them in a confrontational manner. The scene appears tense and suggests a potential safety violation.</p>
-                                <p><strong>Guardrail: </strong>C3 (Threats, Violence & Harm)</p>
-                                <p><strong>Explanation: </strong>The video is flagged under category C3 (Threats, Violence & Harm) as it depicts a physical altercation where one person is being kicked by another while on the ground and another individual is seen holding a firearm, indicating a violent and potentially dangerous situation.</p>
-                            </div>
-                        </div>
-
-                        <!-- Violence: Sexual Violence video -->
-                        <div class="video-item violence violence-sexual-violence">
-                            <div class="flag flag-violence-sexual-violence">Violence: Sexual Violence</div>
-                            <video src="video/violence/sexual_violence/1.mp4" playsinline muted loop>
-                                Your browser does not support the video tag.
-                            </video>
-                            <div class="video-caption">
-                                <p><strong>Description: </strong>In the video, a woman is seated in a chair with a black collar around her neck, while another woman wearing black gloves pierces her nipples with a needle, causing visible pain and distress. The woman being pierced is gagged with a black object.</p>
-                                <p><strong>Guardrail: </strong>C1 (Sexual Content); C2 (Harassment & Bullying); C3 (Threats, Violence & Harm)</p>
-                                <p><strong>Explanation: </strong>The video depicts a non-consensual act of piercing, suggesting sexual abuse and potential physical harm. The woman's distress and the use of restraints indicate elements of sexual abuse and potential physical harm, violating categories C1, C2, and C3.</p>
-                            </div>
-                        </div>
-
-                        <!-- Violence: Vandalism video -->
-                        <div class="video-item violence violence-vandalism">
-                            <div class="flag flag-violence-vandalism">Violence: Vandalism</div>
-                            <video src="video/violence/vandalism/1.mp4" playsinline muted loop>
-                                Your browser does not support the video tag.
-                            </video>
-                            <div class="video-caption">
-                                <p><strong>Description: </strong>In the video, a person is observed approaching a parked car in a nighttime parking lot. The individual carries an object and breaks the car window with it.</p>
-                                <p><strong>Guardrail: </strong>C3 (Threats, Violence & Harm)</p>
-                                <p><strong>Explanation: </strong>The video is flagged under category C3 (Threats, Violence & Harm) as it shows a person vandalizing a car with a bright light shining on them, indicating a potential threat or violent situation.</p>
-                            </div>
-                        </div>
-
-                        <!-- Illegal: Robbery video -->
-                        <div class="video-item illegal illegal-robbery">
-                            <div class="flag flag-illegal-robbery">Illegal: Robbery</div>
-                            <video src="video/illegal/robbery/1.mp4" playsinline muted loop>
-                                Your browser does not support the video tag.
-                            </video>
-                            <div class="video-caption">
-                                <p><strong>Description: </strong>A man in a red hoodie enters a store, points a gun at the cashier, and demands money. He takes cash from the register and flees the scene.</p>
-                                <p><strong>Guardrail: </strong>C3 (Threats, Violence & Harm); C5 (Illegal/Regulated Activities)</p>
-                                <p><strong>Explanation: </strong>The video shows an individual pointing a gun at another person, which constitutes a threat of violence, and appears to depict a robbery or burglary, violating categories C3 (Threats, Violence & Harm) and C5 (Illegal/Regulated Activities).</p>
-                            </div>
-                        </div>
-
-                        <!-- Illegal: Shoplifting video -->
-                        <div class="video-item illegal illegal-shoplifting">
-                            <div class="flag flag-illegal-shoplifting">Illegal: Shoplifting</div>
-                            <video src="video/illegal/shoplifting/1.mp4" playsinline muted loop>
-                                Your browser does not support the video tag.
-                            </video>
-                            <div class="video-caption">
-                                <p><strong>Description: </strong>The video depicts a man in a store arguing with a woman, pushing her, and then throwing items at her.</p>
-                                <p><strong>Guardrail: </strong>C5 (Illegal/Regulated Activities)</p>
-                                <p><strong>Explanation: </strong>The video shows a man physically assaulting a woman in a store, pushing her and throwing items. This behavior constitutes Assault, which is a clear violation of the safety policies.</p>
-                            </div>
-                        </div>
-
-                        <!-- Illegal: War Scenes video -->
-                        <div class="video-item illegal illegal-war">
-                            <div class="flag flag-illegal-war">Illegal: War Scenes</div>
-                            <video src="video/illegal/war/1.mp4" playsinline muted loop>
-                                Your browser does not support the video tag.
-                            </video>
-                            <div class="video-caption">
-                                <p><strong>Description: </strong>The video depicts an explosion in a desert-like environment, showing smoke and debris. It also includes a military operation with a tank moving through a field. The scene is chaotic, with people running and trying to escape from the explosion.</p>
-                                <p><strong>Guardrail: </strong>C5 (Illegal/Regulated Activities)</p>
-                                <p><strong>Explanation: </strong>The video contains scenes of war and military actions, which are restricted and potentially illegal under category C5</p>
-                            </div>
-                        </div>
-
-                        <!-- Extremism: Self-harm video -->
-                        <div class="video-item extremism extremism-selfharm">
-                            <div class="flag flag-extremism-selfharm">Extremism: Self-harm</div>
-                            <video src="video/extremism/selfharm/1.mp4" playsinline muted loop>
-                                Your browser does not support the video tag.
-                            </video>
-                            <div class="video-caption">
-                                <p><strong>Description: </strong>The video shows a person using a razor blade to cut their arm, resulting in blood flow. The person is seen making a threatening gesture with a knife.</p>
-                                <p><strong>Guardrail: </strong>C6 (Hateful Content & Extremism)</p>
-                                <p><strong>Explanation: </strong>The video is flagged under category C6 (Hateful Content & Extremism) as it depicts graphic self-inflicted injury, which can be distressing and harmful to viewers.</p>
-                            </div>
-                        </div>
-
-                        <!-- Extremism: Disturbing video -->
-                        <div class="video-item extremism extremism-disturbing">
-                            <div class="flag flag-extremism-disturbing">Extremism: Disturbing</div>
-                            <video src="video/extremism/disturbing/1.mp4" playsinline muted loop>
-                                Your browser does not support the video tag.
-                            </video>
-                            <div class="video-caption">
-                                <p><strong>Description: </strong>The video depicts a person lying on a bed with a red and yellow floral blanket, displaying visible blood on their feet and legs. The environment around them is messy and appears to be in disarray.</p>
-                                <p><strong>Guardrail: </strong>C6 (Hateful Content & Extremism)</p>
-                                <p><strong>Explanation: </strong>The video contains graphic violence and blood, which may be disturbing to viewers and could potentially incite violence or hatred.</p>
-                            </div>
-                        </div>
-
-                        <!-- Extremism: Anti-social video -->
-                        <div class="video-item extremism extremism-antisocial">
-                            <div class="flag flag-extremism-antisocial">Extremism: Anti-social</div>
-                            <video src="video/extremism/antisocial/1.mp4" playsinline muted loop>
-                                Your browser does not support the video tag.
-                            </video>
-                            <div class="video-caption">
-                                <p><strong>Description: </strong>The video shows a man in a bathrobe standing in a driveway, holding a shotgun. He is talking to someone off-camera and making threats. He is using profanity and appears to be intoxicated.</p>
-                                <p><strong>Guardrail: </strong>C6 (Hateful Content & Extremism)</p>
-                                <p><strong>Explanation: </strong>The video depicts a man brandishing a firearm in a threatening manner, which violates the "Threats, Violence & Harm" policy. Additionally, the man's actions and language could incite fear and distress in viewers, violating the "Hateful Content & Extremism" policy.</p>
-                            </div>
-                        </div>
-
-                        <!-- Extremism: Depression video -->
-                        <div class="video-item extremism extremism-depression">
-                            <div class="flag flag-extremism-depression">Extremism: Depression</div>
-                            <video src="video/extremism/depression/1.mp4" playsinline muted loop>
-                                Your browser does not support the video tag.
-                            </video>
-                            <div class="video-caption">
-                                <p><strong>Description: </strong>The video shows a young woman standing in front of a mirror, holding a phone and talking. She is wearing a blue dress and appears to be in a room with a bed and some clothes in the background. The video is overlaid with a text that reads, 'one thing about me is that I will forever say 'I got this' with a million tears rolling down my face.'</p>
-                                <p><strong>Guardrail: </strong>C6 (Hateful Content & Extremism)</p>
-                                <p><strong>Explanation: </strong>The video is flagged under category C6 (Hateful Content & Extremism) as it contains a text overlay that promotes a negative self-image and emotional distress, which can be interpreted as incitement to mental depression.</p>
-                            </div>
-                        </div>
-
-                        <!-- Misinformation: Acting video -->
-                        <div class="video-item misinformation misinformation-acting">
-                            <div class="flag flag-misinformation-acting">Misinformation: Acting</div>
-                            <video src="video/misinformation/Acting/1.mp4" playsinline muted loop>
-                                Your browser does not support the video tag.
-                            </video>
-                            <div class="video-caption">
-                                <p><strong>Description: </strong>The video captures a man walking up the steps of a house, entering a car, and driving away. It features a low-angle shot, emphasizing the car and the house.</p>
-                                <p><strong>Guardrail: </strong>C4 (False & Deceptive Information)</p>
-                                <p><strong>Explanation: </strong>The video depicts a staged or dramatized event where a person is pretending to have a conversation at a restaurant, which is presented as real, violating category C4 for spreading false information and misleading viewers.</p>
-                            </div>
-                        </div>
-
-                        <!-- Misinformation: Deepfake video -->
-                        <div class="video-item misinformation misinformation-deepfake">
-                            <div class="flag flag-misinformation-deepfake">Misinformation: Deepfake</div>
-                            <video src="video/misinformation/Deepfake/1.mp4" playsinline muted loop>
-                                Your browser does not support the video tag.
-                            </video>
-                            <div class="video-caption">
-                                <p><strong>Description: </strong>The video shows a deepfake video of Joe Biden declaring a nuclear attack on another country, which is a misinformation.</p>
-                                <p><strong>Guardrail: </strong>C4 (False & Deceptive Information)</p>
-                                <p><strong>Explanation: </strong>The video contains a deepfake video of Joe Biden declaring a nuclear attack on another country, which violates the "False & Deceptive Information" policy.</p>
-                            </div>
-                        </div>
-
-                        <!-- Misinformation: Misinformation video -->
-                        <!-- <div class="video-item misinformation misinformation-misinformation">
-                            <div class="flag flag-misinformation-misinformation">Misinformation: Misinformation</div>
-                            <video src="video/misinformation/Misinformation/1.mp4" playsinline muted loop>
-                                Your browser does not support the video tag.
-                            </video>
-                            <div class="video-caption">
-                                <p><strong>Description: </strong>The video captures a man walking up the steps of a house, entering a car, and driving away. It features a low-angle shot, emphasizing the car and the house.</p>
-                                <p><strong>Guardrail: </strong>C4 (False & Deceptive Information)</p>
-                                <p><strong>Explanation: </strong>The video depicts a staged or dramatized event where a person is pretending to have a conversation at a restaurant, which is presented as real, violating category C4 for spreading false information and misleading viewers.</p>
-                            </div>
-                        </div> -->
-
-                        <!-- Misinformation: Out-of-date video -->
-                        <!-- <div class="video-item misinformation misinformation-out-of-date">
-                            <div class="flag flag-misinformation-out-of-date">Misinformation: Out-of-date</div>
-                            <video src="video/misinformation/Out-of-date/1.mp4" playsinline muted loop>
-                                Your browser does not support the video tag.
-                            </video>
-                            <div class="video-caption">
-                                <p><strong>Description: </strong>Outdated content</p>
-                                <p><strong>Guardrail: </strong>Misinformation</p>
-                                <p><strong>Explanation: </strong>Old information detected</p>
-                            </div>
-                        </div> -->
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <!-- Dataset Section (part of video module, always visible) -->
         <div class="dataset-info" id="dataset-section">
-            <div class="centered-title">SafeWatch-Bench Dataset</div>
+            <div class="centered-title">VPA-JND Dataset</div>
             <div class="image-container">
-                <img src="figures/dataset.png" alt="SafeWatch-Bench Dataset">
+                <img src="figures/VPA-JND-new.jpg" alt="VPA-JND Dataset">
                 <div class="caption">
-                    <b>SafeWatch-Bench</b> is a large-scale, high-quality video safety dataset with <b>2M+ videos</b> covering <b>six comprehensive safety categories</b>: (1) <i>Sexual Content</i>, (2) <i>Harassment & Bullying</i>, (3) <i>Threats, Violence & Harm</i>, (4) <i>False & Deceptive Information</i>, (5) <i>Illegal Activities</i>, and (6) <i>Hateful Content & Extremism</i>. Each category is further divided into multiple fine-grained risk subcategories to address diverse safety scenarios.
+                    <b>VPA-JND</b> is a large-scale, high-quality video safety dataset with <b>2M+ videos</b> covering <b>six comprehensive safety categories</b>: (1) <i>Sexual Content</i>, (2) <i>Harassment & Bullying</i>, (3) <i>Threats, Violence & Harm</i>, (4) <i>False & Deceptive Information</i>, (5) <i>Illegal Activities</i>, and (6) <i>Hateful Content & Extremism</i>. Each category is further divided into multiple fine-grained risk subcategories to address diverse safety scenarios.
                     <br>
                     The dataset features two distinct subsets: <br>
 
@@ -1978,7 +1657,7 @@
     <div class="method-section" id="model-architecture">
         <div class="centered-title">SafeWatch Model Architecture</div>
         <div class="image-container">
-            <img src="figures/model.png" alt="SafeWatch Method Overview">
+            <img src="figures/pipeline331.jpg" alt="SafeWatch Method Overview">
             <div class="caption">
                 The decoding pipeline of <b>SafeWatch</b>. Regarding <b>video input (left)</b>, <b>SafeWatch</b> leverages a segmentation model to process the input video into clips based on unsafe events. Then, it samples frames from each event and encodes them into patch tokens. Regarding <b>safety guidelines (right)</b>, <b>SafeWatch</b> encodes each policy in parallel with the equivalent <b>RoPE embedding</b> to ensure they are treated with equal importance. Then, for each policy, <b>SafeWatch</b> calculates the relevance score based on its cross-attention with the video tokens and then activates <b>Top-k</b> most informative tokens and prunes the rest. Finally, these tokens are concatenated with the query for decoding.
             </div>
