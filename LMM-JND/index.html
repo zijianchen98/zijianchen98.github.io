@@ -941,69 +941,13 @@
         <div class="overview-section" style="margin-bottom: 60px; background: #1a1a1a; padding: 20px;">  <!-- Adjusted padding and margin -->
             <div class="overview-content">
                 <p class="highlight-text" style="text-align: left; font-size: 14px; margin: 0;">  <!-- Removed margin from text -->
-                This page is based on a template by LMM-JND
+                This website borrows from a template by <a
+                href="https://safewatch-aiguard.github.io/">SafeWatch</a>
                 </p>
             </div>
         </div>
     </div>
 
-    <script>
-        function toggleStats() {
-            const content = document.querySelector('.stats-content');
-            const button = document.querySelector('.stats-toggle-btn');
-            content.classList.toggle('expanded');
-            button.classList.toggle('expanded');
-        }
-    </script>
 
-    <script>
-        function scrollToSection(sectionId) {
-            const section = document.getElementById(sectionId);
-            if (section) {
-                // Add smooth scrolling with offset for header
-                const headerOffset = 80; // Adjust this value based on your header height
-                const elementPosition = section.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: "smooth"
-                });
-            }
-        }
-    </script>
-
-    <script>
-        function scrollToSeeDemos(event) {
-            event.preventDefault();
-            const demoSection = document.getElementById('video-demos');
-            if (demoSection) {
-                const headerOffset = 80;
-                const elementPosition = demoSection.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: "smooth"
-                });
-            }
-        }
-    </script>
-
-
-    <!-- Update just the script part that controls the button animation -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const demoButton = document.getElementById('seeDemosButton');
-            
-            // Add animation class on page load
-            demoButton.style.animation = 'buttonPulse 2s 1.5';
-            
-            // Remove animation after 3 seconds
-            setTimeout(() => {
-                demoButton.style.animation = 'none';
-            }, 3000);
-        });
-    </script>
 </body>
 </html>
