@@ -1471,7 +1471,7 @@
     <header>
         <nav>
             <div class="logo">
-                <img src="images/icon-lmm-jnd.png" alt="LMM-JND Logo">
+                <img src="figures/icon-lmm-jnd.png" alt="LMM-JND Logo">
                 <span>SafeWatch</span>
             </div>
             <div class="nav-links">
@@ -1486,7 +1486,7 @@
 
     <div class="main-content">
         <div class="main-title">
-            <img src="images/icon-lmm-jnd.png" alt="LMM-JND Logo" class="main-logo">
+            <img src="figures/icon-lmm-jnd.png" alt="LMM-JND Logo" class="main-logo">
             <h1>LMM-JND</h1>
         </div>
         <h2>Just Noticeable Difference for Large Multimodal Models</h2>
@@ -1653,248 +1653,7 @@
         </div>
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const seeDemosButton = document.getElementById('seeDemosButton');
-            const videoSection = document.getElementById('video-section');
-            const videos = document.querySelectorAll('.video-item video');
-            const filterButtons = document.querySelectorAll('.filter-button');
-            const subFilterContainer = document.querySelector('.sub-filter-container');
-            const subFilterButtons = document.querySelectorAll('.sub-filter-button');
-            const videoItems = document.querySelectorAll('.video-item');
-            const consentCheckbox = document.getElementById('consentCheckbox');
-            const proceedButton = document.getElementById('proceedButton');
-
-            // Update the click handler for the See Demos button
-            seeDemosButton.addEventListener('click', function() {
-                if (videoSection.classList.contains('unlocked')) {
-                    // If content is already shown, hide it
-                    videoSection.classList.remove('unlocked');
-                    seeDemosButton.textContent = 'See Demos';
-                } else {
-                    // If content is hidden, show the consent modal
-                    const modal = document.getElementById('customModal');
-                    modal.style.display = 'block';
-                }
-            });
-
-            // Handle modal buttons
-            document.querySelector('.cancel-btn').addEventListener('click', function() {
-                document.getElementById('customModal').style.display = 'none';
-            });
-
-            // Update the confirm button click handler
-            document.querySelector('.confirm-btn').addEventListener('click', function() {
-                document.getElementById('customModal').style.display = 'none';
-                document.getElementById('video-section').classList.add('unlocked');
-                seeDemosButton.textContent = 'Hide Demos'; // Change button text
-                
-                const allButton = document.querySelector('.filter-button[data-filter="all"]');
-                if (allButton) {
-                    allButton.click();
-                    setTimeout(() => {
-                        allButton.click();
-                    }, 500);
-                    setTimeout(() => {
-                        allButton.click();
-                    }, 1000);
-                }
-                
-                // Force Masonry layout refresh
-                const msnry = new Masonry('.video-grid', {
-                    itemSelector: '.video-item',
-                    columnWidth: '.grid-sizer',
-                    percentPosition: true,
-                    gutter: 20
-                });
-                
-                msnry.layout();
-                setTimeout(() => {
-                    msnry.layout();
-                }, 150);
-
-                // Play all videos when unlocked
-                videos.forEach(video => {
-                    video.play().catch(error => console.log('Playback prevented:', error));
-                });
-            });
-
-            // Close modal if clicking outside
-            window.addEventListener('click', function(event) {
-                const modal = document.getElementById('customModal');
-                if (event.target === modal) {
-                    modal.style.display = 'none';
-                }
-            });
-
-            // Initialize Masonry with proper settings
-            const msnry = new Masonry('.video-grid', {
-                itemSelector: '.video-item',
-                columnWidth: '.grid-sizer',
-                percentPosition: true,
-                gutter: 20,
-                horizontalOrder: true // This helps maintain order across columns
-            });
-
-            // Update the showGrid function
-            function showGrid(filter) {
-                const items = document.querySelectorAll('.video-item');
-                items.forEach(item => {
-                    if (filter === 'all' || item.classList.contains(filter)) {
-                        item.style.display = 'block';
-                    } else {
-                        item.style.display = 'none';
-                    }
-                });
-                
-                // Force layout recalculation
-                msnry.layout();
-            }
-
-            // Filter functionality
-            filterButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const filter = this.getAttribute('data-filter');
-                    
-                    filterButtons.forEach(btn => btn.classList.remove('active'));
-                    this.classList.add('active');
-
-                    if (['sexual', 'abuse', 'violence', 'illegal', 'extremism', 'misinformation'].includes(filter)) {
-                        subFilterContainer.classList.add('active');
-                        
-                        // Hide all sub-filter buttons first
-                        document.querySelectorAll('.sub-filter-buttons').forEach(subFilters => {
-                            subFilters.style.display = 'none';
-                        });
-
-                        // Show the appropriate sub-filter buttons
-                        document.querySelector(`.${filter}-sub-filters`).style.display = 'flex';
-
-                        // Reset sub-filter buttons
-                        subFilterButtons.forEach(btn => btn.classList.remove('active'));
-                        const allButton = document.querySelector(`.sub-filter-button[data-filter="${filter}-all"]`);
-                        if (allButton) {
-                            allButton.classList.add('active');
-                        }
-                        
-                        showGrid(filter);
-                    } else {
-                        subFilterContainer.classList.remove('active');
-                        document.querySelectorAll('.sub-filter-buttons').forEach(subFilters => {
-                            subFilters.style.display = 'none';
-                        });
-                        subFilterButtons.forEach(btn => btn.classList.remove('active'));
-                        showGrid(filter);
-                    }
-                });
-            });
-
-            // Sub-filter functionality
-            subFilterButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const subFilter = this.getAttribute('data-filter');
-                    const parentCategory = this.closest('.sub-filter-buttons').classList[1].split('-')[0]; // 'sexual' or 'abuse'
-                    
-                    // Remove active class from all sub-filter buttons in this category
-                    this.closest('.sub-filter-buttons').querySelectorAll('.sub-filter-button').forEach(btn => {
-                        btn.classList.remove('active');
-                    });
-                    this.classList.add('active');
-
-                    if (subFilter.endsWith('-all')) {
-                        // Show all items of the parent category
-                        showGrid(parentCategory);
-                    } else {
-                        // Show only items of the specific subcategory
-                        videoItems.forEach(item => {
-                            item.style.display = item.classList.contains(subFilter) ? 'block' : 'none';
-                        });
-                        msnry.layout();
-                    }
-                });
-            });
-
-            // Function to stream text
-            function streamText(element, text) {
-                let index = 0;
-                element.innerHTML = '';
-                const interval = setInterval(() => {
-                    if (index < text.length) {
-                        element.innerHTML += text[index];
-                        index++;
-                    } else {
-                        clearInterval(interval);
-                    }
-                }, 50); // Adjust speed here
-            }
-
-            // Update hover functionality for video items
-            videoItems.forEach(item => {
-                const video = item.querySelector('video');
-                const description = item.querySelector('.video-caption p:nth-child(1) .streaming-text');
-                const guardrail = item.querySelector('.video-caption p:nth-child(2) .streaming-text');
-                const explanation = item.querySelector('.video-caption p:nth-child(3) .streaming-text');
-
-                item.addEventListener('mouseenter', () => {
-                    if (videoSection.classList.contains('unlocked')) {
-                        video.play().catch(error => console.log('Playback prevented:', error));
-                        
-                        // Stream text for each caption
-                        streamText(description, description.dataset.text);
-                        streamText(guardrail, guardrail.dataset.text);
-                        streamText(explanation, explanation.dataset.text);
-                    }
-                });
-            });
-
-            // Keep existing helper function
-            function isElementInViewport(el) {
-                const rect = el.getBoundingClientRect();
-                return (
-                    rect.top >= 0 &&
-                    rect.left >= 0 &&
-                    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-                    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-                );
-            }
-
-            // Initial layout
-            showGrid('all');
-
-            // Handle window resize
-            let resizeTimer;
-            window.addEventListener('resize', () => {
-                clearTimeout(resizeTimer);
-                resizeTimer = setTimeout(() => {
-                    msnry.layout();
-                }, 250);
-            });
-
-            consentCheckbox.addEventListener('change', function() {
-                proceedButton.disabled = !this.checked;
-            });
-        });
-
-        function showDatasetAlert() {
-            document.getElementById('datasetModal').style.display = 'block';
-        }
-
-        function showDemoAlert() {
-            document.getElementById('demoModal').style.display = 'block';
-        }
-
-        function closeModal(modalId) {
-            document.getElementById(modalId).style.display = 'none';
-        }
-
-        // Close modal if clicking outside
-        window.onclick = function(event) {
-            if (event.target.classList.contains('modal')) {
-                event.target.style.display = 'none';
-            }
-        }
-    </script>
-
+    
 
     <!-- Main Results Section -->
     <div class="method-section" id="main-results">
@@ -1912,15 +1671,23 @@
 
         <!-- Overall Performance Figure -->
         <div class="image-container">
-            <div class="centered-title" style="font-size: 19px;">Overall Performance Comparison</div>
-            <img src="figures/overall.png" alt="Overall Performance Comparison">
+            <div class="centered-title" style="font-size: 19px;">The Minimal Perceptible Distortion Level</div>
+            <img src="figures/1stJND.png" alt="Overall Performance Comparison">
             <div class="caption">
-                Performance comparison of <b>SafeWatch</b> with various video guardrail baselines on
-                <b>SafeWatch-Bench-Real</b>. We report the individual accuracy for each category, along with average accuracy (ACC) and F1 Score across all categories. AUPRC is calculated over binary guardrail
-                outputs. Explanations are rated on a numerical scale of [0,10] by both GPT-4o-as-judge and human
-                evaluators. Inference cost is measured by inference time per video. Best performance is in bold.
+               The minimal perceptible distortion level (1st JND) of various LMMs on different visual stimuli. The general maximum value for each cell is 50, except for the JPEG and banding columns, where the maximum value is 100. ‘WM’ is the abbreviation for the embedded watermark. The best and second-best results are highlighted in bold and underlined, respectively.      
             </div>
         </div>
+
+        <!-- n-th JND Curves -->
+        <div class="image-container">
+            <div class="centered-title" style="font-size: 19px;">n-th JND Curves</div>
+            <img src="figures/njnd.jpg" alt="n-th JND Curves">
+            <div class="caption">
+               LMM-JND curves of several randomly selected stimuli for six representative LMMs. The reference images and their distorted versions are displayed under the curve, where the leftmost one is the original reference image, and the rest are distorted variants with change level = 12, 36, and 48. The ‘0’ and ‘1’ on the vertical axis represent “no response change” and “response changed”, respectively.
+            </div>
+        </div>
+
+
 
         <!-- Correlation with language/vision -->
         <div class="image-container">
