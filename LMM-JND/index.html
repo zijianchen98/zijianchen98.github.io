@@ -5,11 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Just Noticeable Difference for Large Multimodal Models</title>
     <link rel="icon" type="image/x-icon" href="figures/icon-lmm-jnd.ico">
-     <link rel="stylesheet" href="./static/css/bulma.min.css">
-    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
-    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
-    <script src="./static/js/bulma-carousel.min.js"></script>
-    <script src="./static/js/bulma-slider.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600&display=swap');
@@ -763,18 +758,15 @@
                 <div class="overview-content">
                     <div class="overview-text">
                         <p class="highlight-text">
-                            <strong class="overview-label">Overview:</strong> With the wide adoption of generative AI and rapid growth of high-quality video
-                            generation, video guardrails have become more crucial than ever to ensure safety
-                            and security across platforms. We introduce <strong>LMM-JND</strong>, an efficient MLLM-based video guardrail
-                            model designed to follow customized safety policies and provide multi-label video guardrail outputs with content-specific explanations. Specifically, <strong>LMM-JND</strong> incorporates two powerful modules to tackle the high inference latency and policy bias under lengthy safety guidelines input, ensuring a focused, policy-compliant
-                            guardrail with significantly reduced computational overhead. In addition, we introduce <strong>LMM-JND-bench</strong>, a large-scale high-quality video guardrail dataset covering over 30 comprehensive unsafe video scenarios for training and benchmark our model.
+                            <strong class="overview-label">Overview:</strong> Recent years have witnessed unprecedented developments in large multimodal models <strong>(LMMs)</strong>. Beyond these advancements, few studies have investigated the perception limits of LMMs, which not only include the breadth of their capabilities but also their granularity.
+                            As the ultimate receiver and appreciator of the increasingly larger number of visual contents change from the human
                         </p>
                         
                         <div class="key-features">
                             <div class="feature">
                                 <div class="feature-header">
                                     <img src="figures/icon-lmm-jnd.png" class="feature-logo" alt="LMM-JND Logo">
-                                    <span class="feature-text" style="cursor: pointer;" onclick="scrollToSection('model-architecture')">LMM-JND Video Guardrail</span>
+                                    <span class="feature-text" style="cursor: pointer;" onclick="scrollToSection('model-architecture')">LMM-JND Concept</span>
                                 </div>
 
                                 <p style="font-size: 13px;">(1) <strong>Strong policy-following</strong> to provide multi-label guardrail flags with precise explanations.</p>
@@ -885,46 +877,10 @@
             </div>
         </div>
 
-          <!------------------------------------------ extra results -------------------------------------------->
-        <div class="columns is-centered m-6">
-        <div class="column is-full has-text-centered content">
-            <h2 class="title is-3">Statistics</h2>
-            <div id="results-carousel" class="carousel results-carousel">
-                <div class="box m-5">
-                <div class="content has-text-centered">
-                <img src="figures/spot-the-diff2.jpg" alt="dimension_corr" width="50%"/>
-                <p> Tasks Distribution of MileBench</p>
-                </div>
-            </div>
-            <div class="box m-5">
-                <div class="content has-text-centered">
-                <img src="figures/dimension_correlation.png" alt="dimension_corr" width="50%"/>
-                <p> Tasks Distribution of MileBench</p>
-                </div>
-            </div>
-            <div class="box m-5">
-                <div class="content has-text-centered">
-                <img src="figures/response-error.jpg" alt="response-error" width="40%"/>
-                <p> Key Statistics of MileBench. Note that we use tokenizer of LLaMA2 to calculate the token number</p>
-                </div>
-            </div>
-            <div class="box m-5">
-                <div class="content has-text-centered">
-                <img src="figures/prompting2.jpg" alt="response-error2" width="40%"/>
-                <p> Key Statistics of MileBench. Note that we use tokenizer of LLaMA2 to calculate the token number</p>
-                </div>
-            </div>
-        </div>
-        </div>
-
-        </div>
-
-
-
     </div>
 
     <!-- Add BibTeX section -->
-    <div class="bibtex-section" style="width: 100%; max-width: 1100px; margin: 40px auto; padding: 2px; background: rgba(0, 0, 0, 0.2); border-radius: 10px;">
+    <div class="bibtex-section">
         <h2 style="font-family: 'Orbitron', sans-serif; color: #ffffff; margin-bottom: 20px; text-align: center;">BibTeX</h2>
         <pre style="background: #2a2a2a; padding: 20px; border-radius: 8px; overflow-x: auto; color: #ffffff; font-family: 'Roboto Mono', monospace; font-size: 14px; line-height: 1.5;"><code>
             @article{chen2025just,
