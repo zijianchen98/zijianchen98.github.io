@@ -760,7 +760,8 @@
                         <p class="highlight-text">
                             <strong class="overview-label">Overview:</strong> Recent years have witnessed unprecedented developments in large multimodal models <strong>(LMMs)</strong>. Beyond the advancements, few studies have investigated the perception limits of LMMs, which not only include the breadth of their capabilities but also their granularity.
                             As the ultimate receiver and appreciator of the increasingly larger number of visual contents change from the human visual system (HVS) to LMMs, the concerns regarding their perceptual capabilities and safety are gaining prominence. many LMMs struggle to detect and respond differently to changes that humans can easily perceive. 
-                            Thus, a question naturally raises: <strong>what is the minimal magnitude of changes that LMMs can perceive?</strong> 
+                            Thus, a question naturally raises: <strong>what is the minimal magnitude of changes that LMMs can perceive?</strong> In this paper, we propose the <strong>LMM-JND</strong> concept, i.e. <strong>Just Noticeable Difference for Large Multimodal Models</strong>, to explore the perceptual redundancy characteristic for LMMs. 
+                            In addition, we introduce a large-scale LMM-oriented just noticeable difference image dataset <strong>(VPA-JND)</strong> containing over 489k stimuli with more than 21k reference images to quantitatively evaluate the perceptual limits of LMMs and facilitate future LMM-JND studies.
                         </p>
                         
                         <div class="key-features">
@@ -782,9 +783,9 @@
                             </div>
                             <div class="feature">
                                 <span class="feature-text" style="cursor: pointer;" onclick="scrollToSection('main-results')">🎯 Comprehensive Evaluation&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                <p style="font-size: 13px;">(1) <strong>1st JND:</strong> Gemini 2.0 Flash, surpasses the other proprietary LMMs by a substantial margin and approaches human level in spatial awareness stimuli.</p>
+                                <p style="font-size: 13px;">(1) <strong>1st JND:</strong> Gemini 2.0 Flash has the finest level of perception granularity on most low-level and content-injection dists while approaching human level in spatial awareness stimuli.</p>
                                 <p style="font-size: 13px;">(2) <strong>LMM-JND curves:</strong> Show distinct perceptual redundancy intervals in GPT-4o and Qwen series. InternVL2.5 displays more frequent fluctuations in contrast.</p>
-                                <p style="font-size: 13px;">(3) <strong>Vision/Language Backbone:</strong> LMMs with stronger detail perception capabilities generally have a lower Param.L/Param.V.</p>
+                                <p style="font-size: 13px;">(3) <strong>Vision/Language Backbone:</strong> LMMs with stronger detail perception capabilities generally have a lower Param.L / Param.V.</p>
                                 <p style="font-size: 13px;">(4) <strong>Beyond Visual Signal:</strong> LMM-JND is also existed in textual inputs when quantitatively applying adversarial textual attacks.</p>
                             </div>
                         </div>
