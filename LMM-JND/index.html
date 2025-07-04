@@ -954,39 +954,6 @@
         </div>
     </div>
 
-<script>
-  function changeButtonText() {
-    var button = document.getElementById('toggleButton');
-    if (button.innerHTML.includes("Validation Set Leaderboard")) {
-      button.innerHTML = "<b style='font-size: larger;'>Test Set Leaderboard</b> (Click to Switch)";
-    } else {
-      button.innerHTML = "<b style='font-size: larger;'>Validation Set Leaderboard</b> (Click to Switch)";
-    }
-  }
-  document.addEventListener('DOMContentLoaded', function() {
-    var tables = document.querySelectorAll('table');
-
-    tables.forEach(function(table) {
-        if (!table) return;
-
-        var initialRows = Array.from(table.rows).slice(1);
-        table.addEventListener('click', function(event) {
-            var clickedCell = event.target.closest('td, th');
-            if (!clickedCell) return;
-            var headerRow = clickedCell.parentNode;
-            var columnIndex = Array.from(headerRow.cells).indexOf(clickedCell);
-            var type = clickedCell.getAttribute('data-type');
-
-            if (headerRow.rowIndex === 0) {
-                if (columnIndex === 0) {
-                    table.tBodies[0].innerHTML = '';
-                    initialRows.forEach(row => table.tBodies[0].appendChild(row.cloneNode(true)));
-                }
-            }
-        });
-    });
-});
-</script>
 
 
 </body>
