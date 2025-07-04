@@ -809,6 +809,7 @@
                     &nbsp;&nbsp;&nbsp;&nbsp;<b>• Low-level Distortion:</b> We consider 7 typical low-level distortions, i.e., blur, brightness, color saturation, contrast change, JPEG compression, and banding artifacts, resulting from the signal acquisition, transmission, or quantization that deal with efficient visual coding.
                     <br>
                     &nbsp;&nbsp;&nbsp;&nbsp;<b>• Content-injection:</b> Grounded in visual acuity tests and robustness benchmarks as well as the consideration of the input security for LMMs, we outline two different content perturbations, i.e., benign and malicious, that require qualitative and quantitative perception of semantic content, location, and visibility.
+                    <br>
                     &nbsp;&nbsp;&nbsp;&nbsp;<b>• 3D FoV:</b> We build two virtual 3D environments using an optical simulation software, Ansys Speos, which enables us to achieve precise and controllable camera FoV adjustment. We mainly focus on the rotation and revolution of the camera and select 200 reference viewpoints in space. Taking 1cm and 1◦ as the minimum step increments, we generate 10k stimuli with varying viewing distances and angles, including panning, zooming in, horizontal flipping, and pitch transformations.
                 </div>
             </div>
@@ -947,6 +948,60 @@
             </div>
         </div>
     </div>
+
+<style>
+  .hidden {
+      display: none;
+  }
+  .sortable:hover {
+      cursor: pointer;
+  }
+  .asc::after {
+      content: ' ↑';
+  }
+  .desc::after {
+      content: ' ↓';
+  }
+  #toggleButton {
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    color: #555555;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 25px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition-duration: 0.4s;
+  }
+
+  #toggleButton:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19); /* 鼠标悬停时的阴影效果 */
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+  }
+
+  th, td {
+      text-align: left;
+      padding: 8px;
+  }
+
+  th {
+      background-color: #f2f2f2;
+      border-bottom: 2px solid #ddd;
+  }
+
+  td:hover {background-color: #ffffff;}
+</style>
 
 
 </body>
