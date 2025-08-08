@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="a visual benchmarking approach for large models that features easily perceptible and ground-truth-free comparisons in a lightweight setting">
+  <meta name="keywords" content="BioMotion Arena">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BioMotion Arena</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Can Large Models Fool the Eye? A New Turing Test for Biological Animation</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+             Anonymous submission
+            </span>
+          </div>
+
+          <div class="column has-text-centered">
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/BioMotion-Arena/BioMotion-Arena-code"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code and Data</span>
+                  </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img src="./static/images/overview.jpg" alt="Teaser Image" style="width: 100%; height: auto; display: block;margin: 0 auto;">
+      <p style="text-align: left; margin-bottom: 10px;"></p>
+      <h2 class="subtitle" style="text-align: left;max-width: 150%;font-size: 18px;">
+        We propose <span style="font-weight: bold;">BioMotion Arena</span>, the first biological motion-based visual preference evaluation framework for large models. We focus on ten typical human motions
+         and introduce fine-grained control over gender, weight, mood, and direction. More than 45k votes for 53 mainstream LLMs and MLLMs on 90 biological motion variants are collected.
+      </h2>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <video id="teaser" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/biomotion-all-visualization.mp4"
+                type="video/mp4">
+      </video>
+      <h2 class="subtitle has-text-centered">
+        Even young infants can easily interpret the biological motions through pointlight display without any knowledge foundation.
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title is-3" style="text-align: center;">A Glance</h2>
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-biological_motion_sitting">
+          <video poster="" id="biological_motion_sitting" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/biological_motion_sitting.mp4"
+                    type="video/mp4">
+          </video>
+          <p style="text-align: left;font-size: 1rem;margin-bottom: 2px;">Sitting</p>
+        </div>
+
+        <div class="item item-point_light_running">
+          <video poster="" id="point_light_running" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/point_light_running.mp4"
+                    type="video/mp4">
+          </video>
+          <p style="text-align: left;font-size: 1rem;margin-bottom: 2px;">Running</p>
+        </div>
+
+        <div class="item item-ds-r1-05-15point">
+          <video poster="" id="ds-r1-05-15point" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/ds-r1-05-15point.mp4"
+                    type="video/mp4">
+          </video>
+           <p style="text-align: left;font-size: 1rem;margin-bottom: 2px;">Walking: DeepSeek-R1-20250528-15points</p>
+        </div>
+
+        <div class="item item-ds-r1-05-30point">
+          <video poster="" id="ds-r1-05-30point" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/ds-r1-05-30point.mp4"
+                    type="video/mp4">
+          </video>
+           <p style="text-align: left;font-size: 1rem;margin-bottom: 2px;">Walking: DeepSeek-R1-20250528-30points</p>
+        </div>
+
+        <div class="item item-gemini25pro-15point">
+          <video poster="" id="gemini25pro-15point" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/gemini25pro-15point.mp4"
+                    type="video/mp4">
+          </video>
+           <p style="text-align: left;font-size: 1rem;margin-bottom: 2px;">Walking: Gemini 2.5 Pro-15points</p>
+        </div>
+
+        <div class="item item-o3-10point">
+          <video poster="" id="o3-10point" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/o3-10point.mp4"
+                    type="video/mp4">
+          </video>
+           <p style="text-align: left;font-size: 1rem;margin-bottom: 2px;">Walking: OpenAI's o3-10points</p>
+        </div>
+        <div class="item item-o3-30points">
+          <video poster="" id="o3-30points" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/o3-30points.mp4"
+                    type="video/mp4">
+          </video>
+          <p style="text-align: left;font-size: 1rem;margin-bottom: 2px;">Walking: OpenAI's o3-30points</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3" style="text-align: center;">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+           Evaluating the abilities of large models and manifesting their gaps are challenging. Current benchmarks adopt either ground-truth-based score-form evaluation on static datasets
+          or indistinct textual chatbot-style human preferences collection, which may not provide users with immediate, intuitive, and perceptible feedback on performance differences.
+          </p>
+          <p>
+            In this paper, we introduce <span style="font-weight: bold;">BioMotion Arena</span>, a novel framework for evaluating large language models (LLMs) and multimodal large language models (MLLMs) via visual animation. Our methodology draws inspiration from the inherent
+visual perception of motion patterns characteristic of living organisms that utilizes point-light source imaging to amplify the performance discrepancies between models. Specifically, we employ a pairwise comparison evaluation and collect
+more than 45k votes for <span style="font-weight: bold;">53 mainstream LLMs and MLLMs</span> on 90 biological motion variants. 
+          </p>
+          <p>
+            Data analyses show that the crowd-sourced human votes are in good agreement with those of expert raters, demonstrating the superiority of our BioMotion Arena in offering discriminative feedback. We also find over 90% evaluated models, including the cuttingedge open-source InternVL3 and proprietary Claude-4 series,
+fail to produce fundamental humanoid point-light groups, much less smooth and biologically plausible motions. This enables BioMotion Arena to serve as a challenging benchmark for performance visualization and a flexible evaluation
+framework without restrictions on ground-truth.
+          </p>
+        </div>
+      </div>
+    </div>
+    </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <h2 class="title is-3">Statistics of the average lines of code for biological motion representation generated by different models</h2>
+        <img src="./static/images/code-length-full.jpg" alt="Teaser Image" style="width: 100%; height: auto; display: block;margin: 0 auto;">
+        <p style="text-align: left; margin-bottom: 10px;"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <h2 class="title is-3" id="Mdimensional">Win-rate Comparison</h2>
+        <p style="margin-bottom: 2px;">Win-rate (Model A beats Model B) between a subset of models in BioMotion Arena.</p>
+        <img src="./static/images/win-rate.jpg" alt="Teaser Image" style="width: 100%; height: auto; display: block;margin: 0 auto;">
+        <p style="text-align: left; margin-bottom: 10px;"></p>
+        <p style="margin-bottom: 2px;">The rate of 'Both-are-bad' within the code-specific comparisons.</p>
+        <p style="text-align: left; margin-bottom: 10px;"></p>
+        <img src="./static/images/code-specific-bad.jpg" alt="Teaser Image" style="width: 80%; height: auto; display: block;margin: 0 auto;">
+        <p style="text-align: left;">
+          For battles between LLMs, deepseek-R1-0528 consistently outperforms the others (except for OpenAI's o3-mini) by a large margin, winning 62% of its battles against the second-best model, OpenAI's o1. 
+          For battles between MLLMs, where reference images are provided during motion generation, Gemini 2.5 Pro establishes a commanding lead over the entire field of competitors.
+          In general, LLMs exhibit slightly inferior generative performance compared to MLLMs, primarily due to their lack of visual grounding.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <h2 class="title is-3">Elo scores of a subset of models in the BioMotion Arena</h2>
+        <img src="./static/images/elo-score.png" alt="Teaser Image" style="width: 50%; height: auto; display: block;margin: 0 auto;">
+        <p style="text-align: left; margin-bottom: 10px;"></p>
+      </div>
+    </div>
+    <p style="text-align: left;">We can observe a significant gap between open-source and proprietary models. </p>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <h2 class="title is-3">Presentation of Biological Motions</h2>
+      </div>
+    </div>
+    <div class="columns is-centered">
+      <div class="column">
+        <div class="content">
+          <p style="text-align: left; margin-bottom: 2px;">
+            In BioMotion Arena, we focus on ten typical human actions including  <span style="font-weight: bold;">walking, running, waving a hand, jumping up, jumping forward, bowing, lying down, sitting down, turning around, and forward rolling</span>.  
+            Moreover, since biological motion contains information about several different emotions, intentions, personality traits, and biological attributes of the agent, 
+            which can be retrieved by a person at a glance, we further incorporate finer-grained dimensions, including gender, weight, happiness, and direction. This poses stricter scenarios for large models to understand and generate.
+            Here, we display some point-light animations generated by various LLMs and MLLMs.
+          </p>
+          
+         <div style="display: flex; justify-content: space-between; flex-wrap: wrap; margin: 0;">
+            <div style="width:90px; text-align: center; padding: 0; margin-top: 8vh;">
+              <span style="font-weight: bold;">OpenAI's o3</span>
+            </div>
+            <div style="flex: 1 1 20%; text-align: center; padding: 0;">
+              <p style=" margin-bottom: 1px;">Walking</p>
+              <video id="o3-walking" autoplay controls muted loop playsinline style="height: 15vh;object-fit: cover;">
+                <source src="./static/compare/o3-walking.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div style="flex: 1 1 20%; text-align: center; padding: 0;">
+              <p style="margin-bottom: 1px;">Jumping up</p>
+              <video id="o3-Jumping" autoplay controls muted loop playsinline style="height: 15vh;object-fit: cover;">
+                <source src="./static/compare/o3_jumping_up.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div style="flex: 1 1 20%; text-align: center; padding: 0;margin-left: 1px;">
+              <p style="margin-bottom: 1px;">Happy-light-woman-walking</p>
+              <video id="o3-Happy-light-woman-walking" autoplay controls muted loop playsinline style="height: 15vh;object-fit: cover;">
+                <source src="./static/compare/o3_woman_light_happy_walking.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div style="flex: 1 1 20%; text-align: center; padding: 0;">
+              <p style="margin-bottom: 1px;">Sad-heavy-man-walking</p>
+              <video id="o3-Sad-heavy-man-walking" autoplay controls muted loop playsinline style="height: 15vh;object-fit: cover;">
+                <source src="./static/compare/o3-sad-heavy-man-walking.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+
+          
+
+          <div style="display: flex; justify-content: space-between; flex-wrap: wrap; margin: 0;">
+            <div style="width:90px; text-align: center; padding: 0; margin-top: 8vh;">
+              <span style="font-weight: bold;">OpenAI's o4-mini</span>
+            </div>
+            <div style="flex: 1 1 20%; text-align: center; padding: 0;">
+              <p style=" margin-bottom: 1px;">Walking</p>
+              <video id="o4-mini-walking" autoplay controls muted loop playsinline style="height: 15vh;object-fit: cover;">
+                <source src="./static/compare/o4-mini-walking.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div style="flex: 1 1 20%; text-align: center; padding: 0;">
+              <p style="margin-bottom: 1px;">Jumping up</p>
+              <video id="o4-mini-Jumping" autoplay controls muted loop playsinline style="height: 15vh;object-fit: cover;">
+                <source src="./static/compare/o4-mini-jumping.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div style="flex: 1 1 20%; text-align: center; padding: 0;margin-left: 1px;">
+              <p style="margin-bottom: 1px;">Happy-light-woman-walking</p>
+              <video id="o4-mini-Happy-light-woman-walking" autoplay controls muted loop playsinline style="height: 15vh;object-fit: cover;">
+                <source src="./static/compare/o4-mini_woman_light_happy_walking.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div style="flex: 1 1 20%; text-align: center; padding: 0;">
+              <p style="margin-bottom: 1px;">Sad-heavy-man-walking</p>
+              <video id="o4-mini-Sad-heavy-man-walking" autoplay controls muted loop playsinline style="height: 15vh;object-fit: cover;">
+                <source src="./static/compare/o4-mini-heavy-man-sad-walking.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+
+          <div style="display: flex; justify-content: space-between; flex-wrap: wrap; margin: 0;">
+            <div style="width:90px; text-align: center; padding: 0; margin-top: 8vh;">
+              <span style="font-weight: bold;">GPT-4o</span>
+            </div>
+            <div style="flex: 1 1 20%; text-align: center; padding: 0;">
+              <p style=" margin-bottom: 1px;">Walking</p>
+              <video id="GPT-4o-Walking" autoplay controls muted loop playsinline style="height: 15vh;object-fit: cover;">
+                <source src="./static/compare/gpt4o-walking.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div style="flex: 1 1 20%; text-align: center; padding: 0;">
+              <p style="margin-bottom: 1px;">Jumping up</p>
+              <video id="GPT-4o-Jumping" autoplay controls muted loop playsinline style="height: 15vh;object-fit: cover;">
+                <source src="./static/compare/gpt4o-jumpingup.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div style="flex: 1 1 20%; text-align: center; padding: 0;margin-left: 1px;">
+              <p style="margin-bottom: 1px;">Happy-light-woman-walking</p>
+              <video id="GPT-4o-Happy-light-woman-walking" autoplay controls muted loop playsinline style="height: 15vh;object-fit: cover;">
+                <source src="./static/compare/gpt4o_woman_light_happy_walking.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div style="flex: 1 1 20%; text-align: center; padding: 0;">
+              <p style="margin-bottom: 1px;">Sad-heavy-man-walking</p>
+              <video id="GPT-4o-Sad-heavy-man-walking" autoplay controls muted loop playsinline style="height: 15vh;object-fit: cover;">
+                <source src="./static/compare/gpt4o-heavy-man-sad-walking.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+
+          <div style="display: flex; justify-content: space-between; flex-wrap: wrap; margin: 0;">
+            <div style="width:90px; text-align: center; padding: 0; margin-top: 8vh;">
+              <span style="font-weight: bold;">Gemini 2.5 Pro</span>
+            </div>
+            <div style="flex: 1 1 20%; text-align: center; padding: 0;">
+              <p style=" margin-bottom: 1px;">Walking</p>
+              <video id="Gemini25p-Walking" autoplay controls muted loop playsinline style="height: 15vh;object-fit: cover;">
+                <source src="./static/compare/gemini25pro-walking.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div style="flex: 1 1 20%; text-align: center; padding: 0;">
+              <p style="margin-bottom: 1px;">Jumping up</p>
+              <video id="Gemini25p-Jumping" autoplay controls muted loop playsinline style="height: 15vh;object-fit: cover;">
+                <source src="./static/compare/gemini25pro-jumpingup.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div style="flex: 1 1 20%; text-align: center; padding: 0;margin-left: 1px;">
+              <p style="margin-bottom: 1px;">Happy-light-woman-walking</p>
+              <video id="Gemini25p-Happy-light-woman-walking" autoplay controls muted loop playsinline style="height: 15vh;object-fit: cover;">
+                <source src="./static/compare/gemini25pro_woman_light_happy_walking.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div style="flex: 1 1 20%; text-align: center; padding: 0;">
+              <p style="margin-bottom: 1px;">Sad-heavy-man-walking</p>
+              <video id="Gemini25p-Sad-heavy-man-walking" autoplay controls muted loop playsinline style="height: 15vh;object-fit: cover;">
+                <source src="./static/compare/gemini25pro-heavy-man-sad-walking.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+
+          <div style="display: flex; justify-content: space-between; flex-wrap: wrap; margin: 0;">
+            <div style="width:90px; text-align: center; padding: 0; margin-top: 8vh;">
+              <span style="font-weight: bold;">Gemini 2.5 Flash</span>
+            </div>
+            <div style="flex: 1 1 20%; text-align: center; padding: 0;">
+              <p style=" margin-bottom: 1px;">Walking</p>
+              <video id="Gemini25f-Walking" autoplay controls muted loop playsinline style="height: 15vh;object-fit: cover;">
+                <source src="./static/compare/gemini25flash-walking.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div style="flex: 1 1 20%; text-align: center; padding: 0;">
+              <p style="margin-bottom: 1px;">Jumping up</p>
+              <video id="Gemini25f-Jumping" autoplay controls muted loop playsinline style="height: 15vh;object-fit: cover;">
+                <source src="./static/compare/gemini25flash-jumpingup.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div style="flex: 1 1 20%; text-align: center; padding: 0;margin-left: 1px;">
+              <p style="margin-bottom: 1px;">Happy-light-woman-walking</p>
+              <video id="Gemini25f-Happy-light-woman-walking" autoplay controls muted loop playsinline style="height: 15vh;object-fit: cover;">
+                <source src="./static/compare/gemini25flash_woman_light_happy_walking.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div style="flex: 1 1 20%; text-align: center; padding: 0;">
+              <p style="margin-bottom: 1px;">Sad-heavy-man-walking</p>
+              <video id="Gemini25f-Sad-heavy-man-walking" autoplay controls muted loop playsinline style="height: 15vh;object-fit: cover;">
+                <source src="./static/compare/gemini25flash-heavy-man-sad-walking.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+
+          <div style="display: flex; justify-content: space-between; flex-wrap: wrap; margin: 0;">
+            <div style="width:90px; text-align: center; padding: 0; margin-top: 8vh;">
+              <span style="font-weight: bold;">Grok-4</span>
+            </div>
+            <div style="flex: 1 1 20%; text-align: center; padding: 0;">
+              <p style=" margin-bottom: 1px;">Walking</p>
+              <video id="Grok-Walking" autoplay controls muted loop playsinline style="height: 15vh;object-fit: cover;">
+                <source src="./static/compare/grok4-walking.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div style="flex: 1 1 20%; text-align: center; padding: 0;">
+              <p style="margin-bottom: 1px;">Jumping up</p>
+              <video id="Grok-Jumping" autoplay controls muted loop playsinline style="height: 15vh;object-fit: cover;">
+                <source src="./static/compare/grok4-jumpingup.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div style="flex: 1 1 20%; text-align: center; padding: 0;margin-left: 1px;">
+              <p style="margin-bottom: 1px;">Happy-light-woman-walking</p>
+              <video id="Grok-Happy-light-woman-walking" autoplay controls muted loop playsinline style="height: 15vh;object-fit: cover;">
+                <source src="./static/compare/grok4-woman_light_happy_walking.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div style="flex: 1 1 20%; text-align: center; padding: 0;">
+              <p style="margin-bottom: 1px;">Sad-heavy-man-walking</p>
+              <video id="Grok-Sad-heavy-man-walking" autoplay controls muted loop playsinline style="height: 15vh;object-fit: cover;">
+                <source src="./static/compare/grok4-heavy-man-sad-walking.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+          
+          <div style="display: flex; justify-content: space-between; flex-wrap: wrap; margin: 0;">
+            <div style="width:90px; text-align: center; padding: 0; margin-top: 8vh;">
+              <span style="font-weight: bold;">Claude-4-Opus</span>
+            </div>
+            <div style="flex: 1 1 20%; text-align: center; padding: 0;">
+              <p style=" margin-bottom: 1px;">Walking</p>
+              <video id="Clause-4-Walking" autoplay controls muted loop playsinline style="height: 15vh;object-fit: cover;">
+                <source src="./static/compare/claude4-walking.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div style="flex: 1 1 20%; text-align: center; padding: 0;">
+              <p style="margin-bottom: 1px;">Jumping up</p>
+              <video id="Clause-4-Jumping" autoplay controls muted loop playsinline style="height: 15vh;object-fit: cover;">
+                <source src="./static/compare/claude4-jumpingup.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div style="flex: 1 1 20%; text-align: center; padding: 0;margin-left: 1px;">
+              <p style="margin-bottom: 1px;">Happy-light-woman-walking</p>
+              <video id="Clause-4-Happy-light-woman-walking" autoplay controls muted loop playsinline style="height: 15vh;object-fit: cover;">
+                <source src="./static/compare/claude4_woman_light_happy_walking.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div style="flex: 1 1 20%; text-align: center; padding: 0;">
+              <p style="margin-bottom: 1px;">Sad-heavy-man-walking</p>
+              <video id="Clause-4-Sad-heavy-man-walking" autoplay controls muted loop playsinline style="height: 15vh;object-fit: cover;">
+                <source src="./static/compare/claude4-heavy-man-sad-walking.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+
+
+          <div style="display: flex; justify-content: space-between; flex-wrap: wrap; margin: 0;">
+            <div style="width:90px; text-align: center; padding: 0; margin-top: 8vh;">
+              <span style="font-weight: bold;">DeepSeek-R1-20250120</span>
+            </div>
+            <div style="flex: 1 1 20%; text-align: center; padding: 0;">
+              <p style=" margin-bottom: 1px;">Walking</p>
+              <video id="DeepSeek-R1-Walking" autoplay controls muted loop playsinline style="height: 15vh;object-fit: cover;">
+                <source src="./static/compare/ds-r1-01-walking.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div style="flex: 1 1 20%; text-align: center; padding: 0;">
+              <p style="margin-bottom: 1px;">Jumping up</p>
+              <video id="DeepSeek-R1-Jumping" autoplay controls muted loop playsinline style="height: 15vh;object-fit: cover;">
+                <source src="./static/compare/ds-r1-01-jumpingup.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div style="flex: 1 1 20%; text-align: center; padding: 0;margin-left: 1px;">
+              <p style="margin-bottom: 1px;">Happy-light-woman-walking</p>
+              <video id="DeepSeek-R1-Happy-light-woman-walking" autoplay controls muted loop playsinline style="height: 15vh;object-fit: cover;">
+                <source src="./static/compare/ds-r1-01-woman_light_happy_walking.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div style="flex: 1 1 20%; text-align: center; padding: 0;">
+              <p style="margin-bottom: 1px;">Sad-heavy-man-walking</p>
+              <video id="DeepSeek-R1-Sad-heavy-man-walking" autoplay controls muted loop playsinline style="height: 15vh;object-fit: cover;">
+                <source src="./static/compare/ds-r1-01-heavy-man-sad-walking.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+
+          <div style="display: flex; justify-content: space-between; flex-wrap: wrap; margin: 0;">
+            <div style="width:90px; text-align: center; padding: 0; margin-top: 8vh;">
+              <span style="font-weight: bold;">Qwen3-32B</span>
+            </div>
+            <div style="flex: 1 1 20%; text-align: center; padding: 0;">
+              <p style=" margin-bottom: 1px;">Walking</p>
+              <video id="Qwen3-32B-Walking" autoplay controls muted loop playsinline style="height: 15vh;object-fit: cover;">
+                <source src="./static/compare/o4-mini-walking.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div style="flex: 1 1 20%; text-align: center; padding: 0;">
+              <p style="margin-bottom: 1px;">Jumping up</p>
+              <video id="Qwen3-32B-Jumping" autoplay controls muted loop playsinline style="height: 15vh;object-fit: cover;">
+                <source src="./static/compare/qwen3-32b-jumpingup.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div style="flex: 1 1 20%; text-align: center; padding: 0;margin-left: 1px;">
+              <p style="margin-bottom: 1px;">Happy-light-woman-walking</p>
+              <video id="Qwen3-32B-Happy-light-woman-walking" autoplay controls muted loop playsinline style="height: 15vh;object-fit: cover;">
+                <source src="./static/compare/qwen3-32b-woman_light_happy_walking.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div style="flex: 1 1 20%; text-align: center; padding: 0;">
+              <p style="margin-bottom: 1px;">Sad-heavy-man-walking</p>
+              <video id="Qwen3-32B-Sad-heavy-man-walking" autoplay controls muted loop playsinline style="height: 15vh;object-fit: cover;">
+                <source src="./static/compare/qwen3-32b-heavy-man-sad-walking.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+
+        </div>
+        </div>
+      </div>
+    </div>
+</section> 
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+           <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+            <br>
+            Source code is mainly borrowed from <a
+            href="https://github.com/nerfies/nerfies.github.io">Nerfies</a> website.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
