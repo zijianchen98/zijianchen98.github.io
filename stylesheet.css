@@ -212,6 +212,7 @@ span.highlight {
 
 #publications .publication-image {
   width: 28%;
+  padding-right: 25px;
 }
 
 #publications .publication-image img {
