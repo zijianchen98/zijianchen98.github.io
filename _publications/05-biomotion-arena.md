@@ -4,7 +4,7 @@ authors: '<strong>Zijian Chen</strong>, <a href="https://openreview.net/profile?
 year: 2025
 venue: arXiv
 highlight: '<strong>(NEW)</strong>'
-fields: [llm, quality]
+fields: [llm]
 status: preprint
 order: 5
 image: /BioMotion-Arena/static/images/overview.jpg

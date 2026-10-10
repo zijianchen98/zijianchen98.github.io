@@ -4,7 +4,7 @@ authors: '<strong>Zijian Chen</strong>, <a href="https://shss.sjtu.edu.cn/Web/Fa
 year: 2025
 venue: ICLR
 highlight: '<strong>(NEW)</strong>'
-fields: [obi, llm]
+fields: [obi]
 status: published
 order: 17
 image: images/OBI-Bench.jpg

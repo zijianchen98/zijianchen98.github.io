@@ -4,7 +4,7 @@ authors: '<strong>Zijian Chen*</strong>, Wenjie Hua*, <a href="https://scholar.g
 year: 2026
 venue: ICASSP
 highlight: '<strong>(NEW)</strong>'
-fields: [obi, llm]
+fields: [obi]
 status: published
 order: 16
 image: /images/PictOBI-20k.jpg

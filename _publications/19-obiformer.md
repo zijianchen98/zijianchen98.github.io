@@ -13,5 +13,4 @@ links:
   - label: project page
     url: https://github.com/LJHolyGround/OBIFormer
 ---
-<p> In this work, we propose OBIFormer, a fast attentive framework for high-precision Oracle bone inscriptions denoising.
-                  </p>
+<p> In this work, we propose OBIFormer, a fast attentive framework for high-precision Oracle bone inscriptions denoising.</p>

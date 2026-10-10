@@ -4,7 +4,7 @@ authors: 'Ziqi Li*, <strong>Zijian Chen*</strong><sup>†</sup>, Tingzhu Chen<su
 year: 2026
 venue: ICIG
 highlight: '<strong>(NEW)</strong>'
-fields: [obi, llm]
+fields: [obi]
 status: published
 order: 14
 image: /images/S-OBI.png
