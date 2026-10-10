@@ -1,0 +1,42 @@
+current directory: /Users/zijianchen/Desktop/kimicode-zijianchen98.github.io/vendor/bundle/ruby/3.3.0/gems/bigdecimal-4.1.3/ext/bigdecimal
+/opt/homebrew/opt/ruby/bin/ruby extconf.rb
+checking for __builtin_clz()... yes
+checking for __builtin_clzl()... yes
+checking for __builtin_clzll()... yes
+checking for float.h... yes
+checking for math.h... yes
+checking for stdbool.h... yes
+checking for stdlib.h... yes
+checking for x86intrin.h... no
+checking for intrin.h... no
+checking for ruby/atomic.h... yes
+checking for ruby/internal/has/builtin.h... yes
+checking for ruby/internal/static_assert.h... yes
+checking for rb_complex_real() in ruby.h... yes
+checking for rb_complex_imag() in ruby.h... yes
+checking for rb_opts_exception_p() in ruby.h... yes
+checking for rb_category_warn() in ruby.h... yes
+checking for RB_WARN_CATEGORY_DEPRECATED in ruby.h... yes
+checking for RUBY_TYPED_EMBEDDABLE in ruby.h... yes
+creating Makefile
+
+current directory: /Users/zijianchen/Desktop/kimicode-zijianchen98.github.io/vendor/bundle/ruby/3.3.0/gems/bigdecimal-4.1.3/ext/bigdecimal
+make DESTDIR\= sitearchdir\=./.gem.20261010-3322-83mw8i sitelibdir\=./.gem.20261010-3322-83mw8i clean
+
+current directory: /Users/zijianchen/Desktop/kimicode-zijianchen98.github.io/vendor/bundle/ruby/3.3.0/gems/bigdecimal-4.1.3/ext/bigdecimal
+make DESTDIR\= sitearchdir\=./.gem.20261010-3322-83mw8i sitelibdir\=./.gem.20261010-3322-83mw8i
+compiling bigdecimal.c
+warning: unknown warning option '-Wno-cast-function-type'; did you mean '-Wno-bad-function-cast'? [-Wunknown-warning-option]
+1 warning generated.
+compiling missing.c
+warning: unknown warning option '-Wno-cast-function-type'; did you mean '-Wno-bad-function-cast'? [-Wunknown-warning-option]
+1 warning generated.
+linking shared-object bigdecimal.bundle
+ld: warning: dylib (/opt/homebrew/Cellar/ruby/3.3.6/lib/libruby.3.3.dylib) was built for newer macOS version (15.0) than being linked (11.3)
+
+current directory: /Users/zijianchen/Desktop/kimicode-zijianchen98.github.io/vendor/bundle/ruby/3.3.0/gems/bigdecimal-4.1.3/ext/bigdecimal
+make DESTDIR\= sitearchdir\=./.gem.20261010-3322-83mw8i sitelibdir\=./.gem.20261010-3322-83mw8i install
+/usr/bin/install -c -m 0755 bigdecimal.bundle ./.gem.20261010-3322-83mw8i
+
+current directory: /Users/zijianchen/Desktop/kimicode-zijianchen98.github.io/vendor/bundle/ruby/3.3.0/gems/bigdecimal-4.1.3/ext/bigdecimal
+make DESTDIR\= sitearchdir\=./.gem.20261010-3322-83mw8i sitelibdir\=./.gem.20261010-3322-83mw8i clean

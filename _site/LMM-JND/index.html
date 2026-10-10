@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Just Noticeable Difference for Large Multimodal Models</title>
+    <link rel="icon" type="image/x-icon" href="figures/icon-lmm-jnd.ico">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&display=swap');
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #000000;
+            padding: 10px 0;
+        }
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+        .logo span {
+            font-family: 'Orbitron', sans-serif;
+            background: linear-gradient(to right, #60c601, #323232);     /* #cc0000, #3399ff */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+        }
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+        .main-content {
+            max-width: 1400px; /* Reduced from 1600px to 1400px */
+            margin: 0 auto;
+            padding: 30px -40px;
+            text-align: center;
+        }
+        .main-title {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .main-logo {
+            height: 100px;
+            margin-right: 20px;
+        }
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 64px;
+            font-weight: 700;
+            margin: 0;
+            background: linear-gradient(to right, #60c601, #323232);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        h2 {
+            font-family: 'Raleway', sans-serif;
+            font-size: 28px;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+            color: #e0e0e0;
+            max-width: 800px;
+            margin: 20px auto 30px;
+            line-height: 1.4;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        .authors {
+            font-family: 'Raleway', sans-serif;
+            font-size: 20px;
+            font-weight: 400;
+            margin-bottom: 10px;
+            color: #e0e0e0;
+        }
+        .affiliations {
+            font-family: 'Raleway', sans-serif;
+            font-size: 16px;
+            font-weight: 300;
+            margin-bottom: 30px;
+            color: #888;
+        }
+        sup {
+            font-size: 12px;
+            vertical-align: super;
+        }
+        .affiliation {
+            background-color: #ffffff;
+            border-radius: 25px;
+            padding: 10px 20px;
+        }
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 35px;
+        }
+        .button {
+            background-color: #333333;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+ 
+
+        /* Separator Styles */
+        .separator {
+            height: 2px;
+            background: linear-gradient(to right, #60c601, #323232);
+            margin: 60px 0;
+        }
+
+        /* LMM-JND-bench Section Styles */
+        .LMM-JND-bench {
+            background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+
+        .LMM-JND-bench h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 48px;
+            color: #ffffff;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .LMM-JND-bench p {
+            font-family: 'Raleway', sans-serif;
+            font-size: 18px;
+            color: #cccccc;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .dataset-figure {
+            position: relative;
+            z-index: 2;
+            max-width: 1400px;
+            margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .dataset-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .dataset-figure:hover .dataset-image {
+            transform: scale(1.02);
+        }
+
+
+
+        /* Centered Title */
+        .centered-title {
+            text-align: center;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 36px;
+            color: #ffffff;
+            margin: 0 0 10px;
+            padding-top: 5px;
+        }
+
+        .left-title {
+            text-align: left;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 36px;
+            color: #ffffff;
+            margin: 0 0 10px;
+            padding-top: 5px;
+        }
+
+        /* Image and Caption */
+        .image-container {
+            text-align: center;
+            margin: 20px auto;
+            max-width: 1400px; /* Match video section width */
+            padding: 0 20px;
+        }
+
+        .image-container img {
+            max-width: 75%; /* Reduced from 100% to 80% */
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .caption {
+            font-family: 'Raleway', sans-serif;
+            font-size: 16px;
+            color: #cccccc;
+            max-width: 800px;
+            margin: 20px auto;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        /* Dataset info section (always visible, no blur) */
+        .dataset-info {
+            padding: 20px;
+            background-color: #1a1a1a;
+            border-radius: 0 0 12px 12px;
+            margin-bottom: 20px; /* Reduced from 40px to 20px */
+        }
+
+        /* Method section (separate) */
+        .method-section {
+            max-width: 1400px;
+            margin: 40px auto; /* Reduced from 80px to 40px */
+            padding: 0 20px;
+        }
+
+        /* Update these styles in your existing CSS */
+        .overview-section {
+            max-width: 1100px;
+            margin: 5px auto;
+            padding: 20px 30px;
+            background: linear-gradient(135deg, rgba(40, 40, 40, 0.9), rgba(30, 30, 30, 0.95));
+            border-radius: 20px;
+            box-shadow: 
+                0 10px 30px rgba(0, 0, 0, 0.3),
+                inset 0 1px 1px rgba(255, 255, 255, 0.07);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .overview-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(
+                    circle at top right,
+                    rgba(204, 0, 0, 0.08),
+                    transparent 40%
+                ),
+                radial-gradient(
+                    circle at bottom left,
+                    rgba(51, 153, 255, 0.08),
+                    transparent 40%
+                );
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .overview-content {
+            position: relative;
+            z-index: 2;
+            backdrop-filter: blur(10px);
+        }
+
+        .highlight-text {
+            font-size: 15px;
+            color: #ffffff;
+            font-weight: 400;
+            margin-top: 5px;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            text-align: left;
+            font-family: 'Raleway', sans-serif;
+        }
+
+        .key-features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 15px 0;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Enhanced feature box styling */
+        .feature {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+            background: rgba(0, 0, 0, 0.3);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Remove the icon glow effect */
+        .feature-icon::after {
+            display: none;
+        }
+
+        .feature-text {
+            font-size: 16px;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 7px;
+            font-family: 'Orbitron', sans-serif;
+            line-height: 1.2;
+            white-space: nowrap;
+        }
+
+        .feature p {
+            font-size: 14px;
+            line-height: 1.5;
+            color: rgba(255, 255, 255, 0.85);
+            margin: 0;
+            font-family: 'Raleway', sans-serif;
+        }
+
+        .performance-highlights {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .highlight-box {
+            padding: 18px;
+            border-radius: 12px;
+            text-align: left;
+            transition: all 0.3s ease;
+            background: linear-gradient(145deg, #cc0000, #990000);
+        }
+
+        .model-stats, .dataset-stats, .benchmark-stats {
+            background: linear-gradient(145deg, #cc0000, #990000);
+        }
+
+        .highlight-number {
+            font-size: 30px;
+            font-weight: 700;
+            color: #ffffff;
+            display: block;
+            font-family: 'Orbitron', sans-serif;
+            margin-bottom: 4px;
+        }
+
+        .highlight-label {
+            font-size: 15px;
+            color: #ffffff;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 3px;
+        }
+
+        .sub-label {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.8);
+            display: block;
+        }
+
+        /* Update these styles */
+        .overview-text {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Enhance the gradient text */
+        .gradient-text {
+            background: linear-gradient(45deg, #60c601, #323232);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+            font-family: 'Orbitron', sans-serif;
+            text-shadow: 0 0 20px rgba(204, 0, 0, 0.3);
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Add this style to match the white color of the text */
+        .highlight-text strong {
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        /* Add these styles */
+        .overview-label {
+            color: #ffffff;
+            font-weight: 700;
+            text-decoration: underline;
+            text-underline-offset: 4px;
+            padding-right: 4px;
+            font-size: 16px;
+        }
+
+        .highlight-text strong {
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        /* Add these styles */
+        .feature-logo {
+            width: 28px;  /* Increased size */
+            height: 28px;
+            object-fit: contain;
+            filter: brightness(1.1);
+            margin-right: -1px;  /* Adjusted spacing for larger icon */
+            margin-bottom: -6px;
+            transform: translateY(-6px);
+        }
+
+        .feature-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .feature-text {
+            font-size: 16px;
+            font-weight: 600;
+            color: #ffffff;
+            font-family: 'Orbitron', sans-serif;
+            line-height: 1.2;
+            white-space: nowrap;
+        }
+
+        /* If you need to adjust spacing between features */
+        .key-features {
+            display: flex;
+            gap: 20px;
+            justify-content: space-between;
+        }
+
+        /* Target only the second and third feature boxes */
+        .feature:nth-child(2) .feature-text,
+        .feature:nth-child(3) .feature-text {
+            margin-bottom: 20px; /* Add space after the title */
+        }
+
+        .feature:nth-child(2) p:first-of-type,
+        .feature:nth-child(3) p:first-of-type {
+            margin-top: -4px; /* Add space before the description */
+        }
+
+        /* Keep the first feature (LMM-JND Model) as is */
+        .feature:first-child .feature-text {
+            margin-bottom: 5px; /* Original spacing */
+        }
+
+        /* Add these new styles for the streaming effect */
+        .caption-content {
+            display: none;
+            white-space: pre-wrap;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 13px;
+            opacity: 0;
+        }
+
+        .video-item:hover .caption-content {
+            display: inline;
+            opacity: 1;
+        }
+
+        .typing {
+            display: inline;
+            opacity: 1;
+            animation: typing 2s steps(60, end);
+        }
+
+        @keyframes typing {
+            from { 
+                width: 0;
+                opacity: 0;
+            }
+            to { 
+                width: 100%;
+                opacity: 1;
+            }
+        }
+
+        /* Add cursor animation */
+        .typing::after {
+            content: '|';
+            animation: blink 0.7s infinite;
+            color: #cc0000;
+        }
+
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .dataset-info .caption,
+        .method-section .caption,
+        .data-curation-section .caption {
+            max-width: 80%; /* Match the image width */
+            text-align: left; /* Align text to the left */
+            margin: 20px auto 0; /* Adjust margin to align with image */
+        }
+
+        .visitor-stats-container {
+            width: 100%;
+            max-width: 1100px;
+            margin: 20px auto 40px;
+            text-align: center;
+        }
+
+        .stats-toggle-btn {
+            background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            color: #ffffff;
+            font-family: 'Raleway', sans-serif;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 0 auto;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .stats-toggle-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(145deg, #3a3a3a, #2a2a2a);
+        }
+
+        .stats-icon {
+            font-size: 20px;
+        }
+
+        .chevron {
+            transition: transform 0.3s ease;
+        }
+
+        .stats-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 0 0 10px 10px;
+            margin-top: 0;
+        }
+
+        .stats-content.expanded {
+            max-height: 400px;
+            margin-top: 20px;
+            padding: 20px;
+        }
+
+        .stats-toggle-btn.expanded .chevron {
+            transform: rotate(180deg);
+        }
+
+        .feature-text {
+            transition: color 0.3s ease;
+        }
+        
+        .feature-text:hover {
+            color: #cc0000;
+        }
+
+        /* Add these specific styles for the dataset and demo modals */
+        #datasetModal .modal-header,
+        #demoModal .modal-header {
+            background: linear-gradient(145deg, #FFD700, #FFA500);
+        }
+
+        #datasetModal .confirm-btn,
+        #demoModal .confirm-btn {
+            background: linear-gradient(145deg, #FFD700, #FFA500);
+        }
+
+        #datasetModal .confirm-btn:hover,
+        #demoModal .confirm-btn:hover {
+            background: linear-gradient(145deg, #FFA500, #FF8C00);
+        }
+
+        .visitor-stats-title {
+            text-align: center;
+            margin-bottom: 20px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 19px;
+            color: #ffffff;
+        }
+
+        .visitor-stats-title::before,
+        .visitor-stats-title::after {
+            content: '';
+            position: absolute;
+            height: 2px;
+            width: 20%;
+            top: 50%;
+            background: linear-gradient(to right, transparent, rgba(204, 0, 0, 0.5), transparent);
+            display: none;  /* Add this line to hide the elements */
+        }
+
+        .visitor-stats-title::before {
+            left: 5%;
+        }
+
+        .visitor-stats-title::after {
+            right: 5%;
+        }
+
+        .method-section:last-child {
+            margin-bottom: 60px;
+        }
+        
+        .method-section:last-child .overview-section {
+            background: linear-gradient(135deg, rgba(40, 40, 40, 0.9), rgba(30, 30, 30, 0.95));
+            border-radius: 20px;
+            box-shadow: 
+                0 10px 30px rgba(0, 0, 0, 0.3),
+                inset 0 1px 1px rgba(255, 255, 255, 0.07);
+        }
+        
+        .method-section:last-child .highlight-text {
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Add specific style for acknowledgment section */
+        .method-section .overview-section {
+            background: #1a1a1a !important;  /* Override any existing background styles */
+        }
+
+        /* Remove gradient overlay for acknowledgment */
+        .method-section .overview-section::before {
+            display: none;  /* Remove the gradient overlay */
+        }
+
+        /* Ensure content is visible */
+        .method-section .overview-content {
+            backdrop-filter: none;  /* Remove any backdrop filter */
+        }
+
+        .conference {
+            text-align: center;
+            margin: 20px 0 28px 0;  /* Increased top and bottom margins */
+            font-family: 'Google Sans', sans-serif;
+            font-size: 1.25em;      /* Increased from 1.1em */
+            letter-spacing: 1.2px;   /* Slightly increased letter spacing */
+        }
+
+        .conference span {
+            background: linear-gradient(120deg, #60c601, #323232);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 500;
+            padding: 6px 16px;       /* Slightly increased padding */
+            position: relative;
+        }
+
+        .conference span::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(78, 67, 118, 0.4), transparent);
+        }
+    </style>
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+    <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="figures/icon-lmm-jnd.png" alt="LMM-JND Logo">
+                <span>LMM-JND</span>
+            </div>
+            <div class="nav-links">
+                <a href="https://arxiv.org/pdf/2507.00490">Paper</a>
+                <a href="https://github.com/zijianchen98/LMM-JND">Code</a>
+                <!-- <a href="#demo" onclick="showDatasetAlert()">Dataset</a> -->
+               <!-- <a href="https://huggingface.co/datasets/Zhaorun/LMM-JND-bench">Dataset</a> -->
+                <a href="https://www.alphaxiv.org/abs/2507.00490">Alphaxiv Community</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="main-content">
+        <div class="main-title">
+            <img src="figures/icon-lmm-jnd.png" alt="LMM-JND Logo" class="main-logo">
+            <h1>LMM-JND</h1>
+        </div>
+        <h2>Just Noticeable Difference for Large Multimodal Models</h2>
+        
+        <p class="authors">
+            Zijian Chen<sup>1,2</sup>, Yuan Tian<sup>1,2</sup>, Yuze Sun<sup>1</sup>, Wei Sun<sup>3</sup>, Zicheng Zhang<sup>1,2</sup>, Weisi Lin<sup>4</sup>, Guangtao Zhai<sup>1,2</sup>, Wenjun Zhang<sup>1</sup>
+        </p>
+
+        <div class="affiliations">
+            <p><sup>1</sup>Shanghai Jiao Tong University, <sup>2</sup>Shanghai AI Laboratory, <sup>3</sup>East China Normal University, <sup>4</sup>Nanyang Technological University</p>
+        </div>
+
+        <div class="conference">
+            <span>Arxiv 2025</span>
+        </div>
+
+        <div class="buttons">
+            <button class="button" onclick="window.open('https://arxiv.org/pdf/2507.00490', '_blank')">Read Paper</button>
+            <button class="button" onclick="window.open('https://github.com/zijianchen98/LMM-JND/', '_blank')">Code Repo</button>
+            <!-- <button class="button" onclick="showDatasetAlert()">Request Dataset</button> -->
+           <!-- <button class="button" onclick="window.open('https://huggingface.co/datasets/Zhaorun/LMM-JND-bench', '_blank')">Dataset</button> -->
+        </div>
+
+        <div class="overview-section">
+            <div class="overview-container">
+                <div class="overview-content">
+                    <div class="overview-text">
+                        <p class="highlight-text">
+                            <strong class="overview-label">Overview:</strong> Recent years have witnessed unprecedented developments in large multimodal models <strong>(LMMs)</strong>. Beyond the advancements, few studies have investigated the perception limits of LMMs, which not only include the breadth of their capabilities but also their granularity.
+                            As the ultimate receiver and appreciator of the increasingly larger number of visual contents change from the human visual system (HVS) to LMMs, the concerns regarding their perceptual capabilities and safety are gaining prominence. Many LMMs struggle to detect and respond differently to changes that humans can easily perceive. 
+                            Thus, a question naturally raises: <strong>what is the minimal magnitude of changes that LMMs can perceive?</strong> In this paper, we propose the <strong>LMM-JND</strong> concept, i.e. <strong>Just Noticeable Difference</strong> for LMMs, to explore the perceptual redundancy characteristic for LMMs. 
+                            In addition, we introduce a large-scale LMM-oriented just noticeable difference image dataset <strong>(VPA-JND)</strong> containing over 489k stimuli with more than 21k reference images to quantitatively evaluate the perceptual limits of LMMs and facilitate future LMM-JND studies.
+                        </p>
+                        
+                        <div class="key-features">
+                            <div class="feature">
+                                <div class="feature-header">
+                                    <img src="figures/icon-lmm-jnd.png" class="feature-logo" alt="LMM-JND Logo">
+                                    <span class="feature-text" style="cursor: pointer;" onclick="scrollToSection('model-architecture')">LMM-JND Concept&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                </div>
+                                <p style="font-size: 13px;">(1) <strong>Quantify</strong> the perceptual redundancy characteristic for LMMs.</p>
+                                <p style="font-size: 13px;">(2) Act as a <strong>benefit zone</strong> that allows the LMM to ignore insignificant or irrelevant variations in the input, benefitting the processing efficiency.</p>
+                                <p style="font-size: 13px;">(3) Explain security concerns, e.g., data tampering and attacking, and indicate the <strong>robustness</strong> of the LMM in certain scenarios.</p>
+                            </div>
+                            <div class="feature">
+                                <span class="feature-text" style="cursor: pointer;" onclick="scrollToSection('dataset-section')">📊 VPA-JND Dataset</span>
+                                <p style="font-size: 13px;">(1) <strong>Large-scale:</strong> Contain 21,598 reference images and 489,065 stimuli.</p>
+                                <p style="font-size: 13px;">(2) <strong>Human visual system-aligned:</strong> Draw inspiration from the signal processing mechanisms of the human visual cortex (v1-v4), which strategically aligns with the human-like development objectives of contemporary LMMs.</p>
+                                <p style="font-size: 13px;">(3) <strong>Comprehensiveness:</strong> Involve 7 common low-level distortions and 2 content injection patterns, as well as 2 spatial FoV changes.</p>
+                            </div>
+                            <div class="feature">
+                                <span class="feature-text" style="cursor: pointer;" onclick="scrollToSection('main-results')">🎯 Comprehensive Evaluation&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                <p style="font-size: 13px;">(1) <strong>1st JND:</strong> Gemini 2.0 Flash has the finest level of perception granularity on most low-level and content-injection dists. while approaching human level in spatial awareness stimuli.</p>
+                                <p style="font-size: 13px;">(2) <strong>LMM-JND curves:</strong> Show distinct perceptual redundancy intervals in GPT-4o and Qwen series. InternVL2.5 displays more frequent fluctuations in contrast.</p>
+                                <p style="font-size: 13px;">(3) <strong>Vision/Language Backbone:</strong> LMMs with stronger detail perception capabilities generally have a lower Param.L / Param.V.</p>
+                                <p style="font-size: 13px;">(4) <strong>Beyond Visual Signal:</strong> LMM-JND is also exist in textual inputs when quantitatively applying adversarial textual attacks.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+  
+
+
+        <!-- Dataset Section (part of video module, always visible) -->
+        <div class="dataset-info" id="dataset-section">
+            <div class="centered-title">VPA-JND Dataset</div>
+            <div class="image-container">
+                <img src="figures/VPA-JND-new.jpg" alt="VPA-JND Dataset">
+                <div class="caption">
+                    <b>VPA-JND</b> is a large-scale, HVS-aligned, and comprehensive dataset with <b>21,598 reference images and 489,065 stimuli</b> covering three categories: (1) <i>low-level distorted images</i>, (2) <i>content-injected images</i>, and (3) <i></i>3D field of view (FoV) images. Each category is further divided into multiple fine-grained subsets to address diverse perception and safety scenarios.
+                    <br>
+                    The dataset features three distinct subsets: <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<b>• Low-level Distortion:</b> We consider 7 typical low-level distortions, i.e., blur, brightness, color saturation, contrast change, JPEG compression, and banding artifacts, resulting from the signal acquisition, transmission, or quantization that deal with efficient visual coding.
+                    <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<b>• Content-injection:</b> Grounded in visual acuity tests and robustness benchmarks as well as the consideration of the input security for LMMs, we outline two different content perturbations, i.e., benign and malicious, that require qualitative and quantitative perception of semantic content, location, and visibility.
+                    <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<b>• 3D FoV:</b> We build two virtual 3D environments using Ansys Speos to achieve precise and controllable camera FoV adjustment. We focus on the rotation and revolution of the camera and generate 10k stimuli with varying viewing distances and angles, including panning, zooming in, horizontal flipping, and pitch transformations.
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Data Curation Section (separate section) -->
+    <div class="data-curation-section">
+        <div class="centered-title">LMM-JND Determination Pipeline</div>
+        <div class="image-container">
+            <img src="figures/pipeline.jpg" alt="Pipeline" style="width: 80%; max-width: 700px;">
+            <div class="centered-caption">
+                See detailed descriptions in the paper. 
+            </div>
+        </div>
+    </div>
+
+    
+
+    <!-- Main Results Section -->
+    <div class="method-section" id="main-results">
+        <div class="centered-title">Main Results</div>
+
+        <div class="image-container">
+            <div class="centered-title" style="font-size: 19px;">Evaluation Models</div>
+            <img src="figures/baselines.png" alt="baselines">
+            <div class="caption">
+              We select 5 representative LMMs series including Qwen2.5-VL, DeepSeek-VL2, InternVL2.5, Qwen2-VL, and LLaVA-OneVision, as well as the currently smallest vision-language model, SmolVLM-256M, for evaluation. These LMMs not only vary in their vision architectures, such as QwenViT vs. SigLIP with different number of parameters (675M vs. 400M) and input sizes (224x224 vs. 384x384), but also in their language backbones (Qwen2.5 vs. DeepSeekMoE) and scales (72B vs. 16B). In addition to the 16 open-source models listed in the above Table, we also include 4 mainstream proprietary LMMs, i.e., GPT-4o (2024-11-20), Gemini (2.0 Flash and 1.5 Pro), and Qwen-VL-Max (2024-11-19) for evaluation. All models natively support multi-image inputs to ensure the best performance. 
+            </div>
+        </div>
+
+        <!-- Overall Performance Figure -->
+        <div class="image-container">
+            <div class="centered-title" style="font-size: 19px;">The Minimal Perceptible Distortion Level</div>
+            <img src="figures/1stJND.png" alt="Overall Performance Comparison">
+            <div class="caption">
+               The minimal perceptible distortion level (1st JND) of various LMMs on different visual stimuli. The general maximum value for each cell is 50, except for the JPEG and banding columns, where the maximum value is 100. ‘WM’ is the abbreviation for the embedded watermark. The best and second-best results are highlighted in bold and underlined, respectively.      
+            </div>
+        </div>
+
+        <!-- n-th JND Curves -->
+        <div class="image-container">
+            <div class="centered-title" style="font-size: 19px;">n-th JND Curves</div>
+            <img src="figures/njnd.jpg" alt="n-th JND Curves">
+            <div class="caption">
+               LMM-JND curves of several randomly selected stimuli for six representative LMMs. The reference images and their distorted versions are displayed under the curve, where the leftmost one is the original reference image, and the rest are distorted variants with change level = 12, 36, and 48. The ‘0’ and ‘1’ on the vertical axis represent “no response change” and “response changed”, respectively.
+            </div>
+        </div>
+
+
+
+        <!-- Correlation with language/vision -->
+        <div class="image-container">
+            <div class="centered-title" style="font-size: 19px;">1st JND vs. Parameter Ratio (L / V)</div>
+            <img src="figures/scatter-ratio-new.jpg" alt="1st-jnd vs. Param.">
+            <div class="caption">
+                1st JND versus the parameter ratio of the language backbone (Param.L) to the visual backbone (Param.V). The red dotted curves show the fitted optimization direction of the perception granularity for large models (72B/78B).
+            </div>
+        </div>
+
+        <!-- Text Attack Figure -->
+        <div class="image-container">
+            <div class="centered-title" style="font-size: 19px;">Beyond Visual Signals and with Other Modalities</div>
+            <img src="figures/text-attack.jpg" alt="Beyond Visual Signals and with Other Modalities">
+            <div class="caption">
+                Illustration of different textual attacks and the response change ratio w.r.t. the perturbation level. The image placeholders are excluded in counting the characters and words.
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Add BibTeX section -->
+    <div class="bibtex-section" style="width: 100%; max-width: 1100px; margin: 40px auto; padding: 2px; border-radius: 10px;">
+        <h2 style="font-family: 'Orbitron', sans-serif; color: #ffffff; margin-bottom: 20px; text-align: center;">BibTeX</h2>
+        <pre style="background: #2a2a2a; padding: 20px; border-radius: 8px; overflow-x: auto; color: #ffffff; font-family: 'Roboto Mono', monospace; font-size: 14px; line-height: 1.5;"><code>
+        @article{chen2025just,
+            title={Just Noticeable Difference for Large Multimodal Models},
+            author={Zijian Chen and Yuan Tian and Yuze Sun and Wei Sun and Zicheng Zhang and Weisi Lin and Guangtao Zhai and Wenjun Zhang},
+            journal={arXiv preprint arXiv:2507.00490},
+            year={2025}
+          }</code></pre>
+    </div>
+
+
+    <div class="visitor-stats-container" style="width: 50%; max-width: 500px;">
+        <div class="visitor-stats-title">Global Visitors Statistics on Our Project</div>
+        <script type="text/javascript" id="clustrmaps" src="//clustrmaps.com/map_v2.js?d=MnlQksY9LC0Qf3t_GklBKQOhOWJ2_BgAylB8giJS2K4&cl=ffffff&w=a"></script>
+    </div>
+
+    <!-- Update the acknowledgment section's style -->
+    <div class="method-section">
+        <div class="centered-title" style="font-size: 20px;">Acknowledgment</div>
+        <div class="overview-section" style="margin-bottom: 60px; background: #1a1a1a; padding: 20px;">  <!-- Adjusted padding and margin -->
+            <div class="overview-content">
+                <p class="highlight-text" style="text-align: left; font-size: 14px; margin: 0;">  <!-- Removed margin from text -->
+                This website borrows from a template by <a
+                href="https://safewatch-aiguard.github.io/">SafeWatch</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+
+</body>
+</html>

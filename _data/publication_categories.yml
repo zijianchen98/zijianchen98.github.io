@@ -1,0 +1,12 @@
+- id: all
+  label: All Selected Publications
+- id: llm
+  label: MLLM / LLM
+- id: quality
+  label: Image / Video Quality Assessment / Low-level
+- id: obi
+  label: Oracle Bone Inscriptions (OBI) Processing
+- id: early
+  label: Early Works
+- id: preprints
+  label: Preprints

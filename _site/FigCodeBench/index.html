@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FigCodeBench — From Pixel to Coding</title>
+  <meta name="description" content="FigCodeBench evaluates the figure reproduction capabilities of MLLMs with 6,194 image-code pairs, four programming languages, and a multi-dimensional evaluation of 24 models.">
+  <meta name="keywords" content="FigCodeBench, MLLMs, figure reproduction, figure-to-code, multimodal evaluation, scientific figures">
+  <meta name="author" content="Zijian Chen and collaborators">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="canonical" href="https://zijianchen98.github.io/FigCodeBench/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="FigCodeBench">
+  <meta property="og:title" content="From Pixel to Coding: Evaluating the Figure Reproduction Capabilities of MLLMs">
+  <meta property="og:description" content="6,194 image-code pairs. Four programming languages. 24 MLLMs. A benchmark for unified multimodal comprehension and generation.">
+  <meta property="og:url" content="https://zijianchen98.github.io/FigCodeBench/">
+  <meta property="og:image" content="https://zijianchen98.github.io/FigCodeBench/asset/intro.png">
+  <meta property="og:image:width" content="1919">
+  <meta property="og:image:height" content="932">
+  <meta property="og:image:alt" content="FigCodeBench figure reproduction and evaluation overview">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="From Pixel to Coding: Evaluating the Figure Reproduction Capabilities of MLLMs">
+  <meta name="twitter:description" content="FigCodeBench: evaluating MLLMs on figure reproduction across four programming languages.">
+  <meta name="twitter:image" content="https://zijianchen98.github.io/FigCodeBench/asset/intro.png">
+  <meta name="twitter:image:alt" content="FigCodeBench figure reproduction and evaluation overview">
+  <link rel="icon" type="image/png" href="asset/icon.png">
+  <link rel="stylesheet" href="static/css/index.css">
+  <script src="static/js/index.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <nav class="site-nav" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a class="wordmark" href="#top">FigCodeBench</a>
+      <div class="nav-links">
+        <a href="#abstract">Overview</a>
+        <a href="#dataset">Dataset</a>
+        <a href="#metrics">Metrics</a>
+        <a href="#leaderboard">Leaderboard</a>
+        <a href="#citation">Citation</a>
+      </div>
+    </div>
+  </nav>
+  <header class="hero" id="top">
+    <div class="container">
+      <img class="project-logo" src="asset/icon.png" width="1800" height="640" alt="FigCodeBench" fetchpriority="high">
+      <p class="eyebrow">A benchmark for figure-to-code generation</p>
+      <h1>From Pixel to Coding:<br><span>Evaluating the Figure Reproduction Capabilities of MLLMs</span></h1>
+      <div class="authors">
+        <span><a href="https://scholar.google.com.hk/citations?hl=zh-CN&amp;user=NSR4UkMAAAAJ">Zijian Chen</a><sup>1,2</sup>,</span>
+        <span>Zhengyu Chen<sup>1</sup>,</span>
+        <span>Bohan Liang<sup>2</sup>,</span>
+        <span>Lirong Deng<sup>3</sup>,</span>
+        <span>Yushuo Zheng<sup>1,2</sup>,</span>
+        <span>Yanwei Jiang<sup>1,2</sup>,</span>
+        <span>Qi Jia<sup>2</sup>,</span>
+        <span>Kaiwei Zhang<sup>2</sup>,</span>
+        <span>Wenjun Zhang<sup>1</sup>,</span>
+        <span><a href="https://ee.sjtu.edu.cn/FacultyDetail.aspx?id=24&amp;infoid=66&amp;flag=66">Guangtao Zhai</a><sup>1,2,*</sup></span>
+      </div>
+      <p class="affiliations"><span><sup>1</sup> Shanghai Jiao Tong University</span><span><sup>2</sup> Shanghai AI Laboratory</span><span><sup>3</sup> Macao Polytechnic University</span></p>
+      <p class="corresponding"><sup>*</sup> Corresponding author</p>
+      <div class="publication-links">
+        <a class="pill" href="https://arxiv.org/abs/2610.10066"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6zM14 3v5h4M9 12h6M9 16h6"/></svg>Paper</a>
+        <a class="pill" href="https://github.com/zijianchen98/FigCodeBench"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m8 6-6 6 6 6m8-12 6 6-6 6m-3-15-2 18"/></svg>Code</a>
+        <a class="pill" href="https://huggingface.co/datasets/CCZZJJ/FigCodeBench/"><svg aria-hidden="true" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 4 16 4 16 0V5M4 12c0 4 16 4 16 0"/></svg>Dataset</a>
+      </div>
+      <p class="hero-subtitle">Evaluating MLLMs on figure reproduction,<br class="desktop-break"> integrating multimodal comprehension and generation.</p>
+      <figure class="research-figure teaser">
+        <a class="figure-link" href="asset/intro.png" data-zoom aria-label="View FigCodeBench overview at full size"><img src="asset/intro.png" width="1919" height="932" alt="FigCodeBench overview of scientific figure reproduction and the evaluation pipeline" fetchpriority="high"></a>
+        <figcaption>From a scientific figure to reproducing code: the FigCodeBench task and evaluation overview.</figcaption>
+      </figure>
+    </div>
+  </header>
+  <main id="main">
+    <section class="section shaded" id="abstract" aria-labelledby="abstract-title">
+      <div class="container narrow">
+        <p class="eyebrow">Perception meets generation</p>
+        <h2 id="abstract-title">Abstract</h2>
+        <p class="abstract-text">Multimodal Large Language Models (MLLMs) have demonstrated impressive capabilities in both visual understanding and code generation. However, existing benchmarks typically evaluate these two modalities in isolation, lacking a dedicated assessment of their unification, i.e., how a model can perceive complex visual structures and synthesize them into precise, executable code. Moreover, current visual code generation benchmarks often rely on simplified layouts within single programming environments, falling short of evaluating true unified multimodal reasoning.
+             To bridge this gap, we propose FigCodeBench, a comprehensive framework for rigorously evaluating MLLMs on figure reproduction, integrating multimodal comprehension and generation. 
+             We first design a systematic dataset construction pipeline, resulting in a total of 6,194 instances that cover 7 functional categories and 4 types of programming languages (Python, Matlab, R, and Latex). 
+We further categorize figure reproduction into three tiers (Easy, Medium, Hard) with visual and code complexity modeling, specifically targeting complex structural reasoning, varying aspect ratios, and dense geometric constraints. 
+We introduce a multi-dimensional evaluation protocol, encompassing visual fidelity (e.g., PSNR, SSIM, LPIPS) and syntactic isomorphism (e.g., abstract syntax tree similarity), that aligns highly with the Mean Machine Opinion Score (MMOS) and human preferences. 
+Based on our framework, we conducted extensive experiments on 24 widely used proprietary and open-source MLLMs (e.g., Gemini 3.1 Pro, GPT-5.4, and Kimi-K2.5), where we observed a universal, non-linear performance cliff across different programming languages and difficulty scenarios for all models, and gained several insights, such as the significant metric decline in rigid declarative languages. 
+Our benchmark offers (1) a comprehensive dataset and multi-dimensional evaluation pipeline; (2) an up-to-date leaderboard on MLLM figure reproduction proficiency; and (3) a nuanced understanding of the perceiving and reasoning bottlenecks hindering unified comprehension and generation in current MLLMs.</p>
+      </div>
+    </section>
+    
+    <section class="section shaded" id="introduction" aria-labelledby="introduction-title">
+      <div class="container">
+        <p class="eyebrow">Beyond describing an image</p>
+        <h2 id="introduction-title">Why figure reproduction?</h2>
+        <div class="prose">
+          <p>Researchers often have a scientific figure and need working code that reproduces it. For a model, this means turning visual structure into a rendered program, not merely describing the image or answering questions about it. We argue that text-only coding tests and image-understanding tests leave this perception-to-generation step unmeasured.</p>
+          <p>FigCodeBench assesses the ability to observe complex charts—such as line graphs, bar charts, scatter plots, and architecture diagrams—and generate corresponding reproducing code. This tests visual perception and fine-grained understanding, while challenging logical reasoning and alignment in code generation.</p>
+        </div>
+        <h3 class="centered">Core contributions</h3>
+        <div class="contribution-grid">
+          <article class="contribution"><span class="stat">6,194</span><h4>Image-code pairs</h4><p>A comprehensive collection covering <strong>four languages</strong>: Python, MATLAB, R, and LaTeX.</p></article>
+          <article class="contribution"><span class="stat stat-text">Multi-dimensional</span><h4>Automatic evaluation</h4><p>Image-oriented and code-oriented metrics, Mean Machine Opinion Score, and Figure-Code Fidelity.</p></article>
+          <article class="contribution"><span class="stat">24</span><h4>Evaluated MLLMs</h4><p>Experiments examine capability boundaries, adaptability across languages, and common error patterns.</p></article>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="dataset" aria-labelledby="dataset-title">
+      <div class="container">
+        <p class="eyebrow">The figure-code collection</p>
+        <h2 id="dataset-title">Dataset</h2>
+        <p class="section-intro">6,194 image-code pairs across four programming languages.<br>Explore the collection on <a href="https://huggingface.co/datasets/CCZZJJ/FigCodeBench/">Hugging Face</a>.</p>
+        <h3 class="centered">Difficulty distribution</h3>
+        <figure class="research-figure">
+          <a class="figure-link" href="asset/Difficulty.png" data-zoom aria-label="View difficulty distribution at full size"><img src="asset/Difficulty.png" width="1913" height="1046" loading="lazy" decoding="async" alt="Dataset difficulty distribution across the language collections"></a>
+          <figcaption>Difficulty distribution of the FigCodeBench collections.</figcaption>
+        </figure>
+        <h3>Language collections</h3>
+        <div class="table-scroll" role="region" aria-label="Language collections table" tabindex="0">
+          <table><thead><tr><th scope="col">Directory</th><th scope="col">Language</th><th scope="col">Source code extension</th></tr></thead><tbody>
+            <tr><td><code>python/</code></td><td>Python</td><td><code>.py</code></td></tr>
+            <tr><td><code>Matlab/</code></td><td>MATLAB</td><td><code>.m</code></td></tr>
+            <tr><td><code>R/</code></td><td>R</td><td><code>.R</code></td></tr>
+            <tr><td><code>latex/</code></td><td>LaTeX</td><td><code>.tex</code></td></tr>
+          </tbody></table>
+        </div>
+        <p>Figure images are stored in PNG format. Auxiliary information is provided in text files whose names end with <code>_auxinfo.txt</code>.</p>
+        <h3>Subsets and versions</h3>
+        <p>Each language directory contains <code>exemplary/</code> and <code>user_generated/</code> subsets. Both follow the same six-directory structure:</p>
+        <div class="dataset-layout">
+          <pre aria-label="Dataset directory structure"><code>&lt;language&gt;/
+├── exemplary/
+│   ├── code_base/
+│   ├── code_variant1/
+│   ├── code_variant2/
+│   ├── image_base/
+│   ├── image_variant1/
+│   └── image_variant2/
+└── user_generated/
+    ├── code_base/
+    ├── code_variant1/
+    ├── code_variant2/
+    ├── image_base/
+    ├── image_variant1/
+    └── image_variant2/</code></pre>
+          <div><h4>Base and variant collections</h4><p><code>code_base/</code> contains source code and auxiliary information for the base collection; <code>image_base/</code> contains its figure images.</p><p><code>code_variant1/</code> and <code>code_variant2/</code> contain source code and auxiliary information for the first and second variants. Their figure images are in <code>image_variant1/</code> and <code>image_variant2/</code>.</p><p class="note">Variant collections contain modified figure-code examples. Their sizes may differ from the base collection: do not assume every base example has both variants.</p></div>
+        </div>
+        <h3>Visualization categories</h3>
+        <p>The Python, MATLAB, and R collections organize files into six categories within each code and image directory:</p>
+        <dl class="category-grid">
+          <div><dt>Composition</dt><dd>Composition-based visualizations</dd></div>
+          <div><dt>Geospatial</dt><dd>Geographic plots</dd></div>
+          <div><dt>Mathematical</dt><dd>Mathematical graphics</dd></div>
+          <div><dt>Relational</dt><dd>Relationship-based charts</dd></div>
+          <div><dt>Statistical</dt><dd>Statistical graphics</dd></div>
+          <div><dt>Temporal</dt><dd>Time-oriented visualizations</dd></div>
+        </dl>
+        <p>The <strong>LaTeX collection (Conceptual)</strong> uses a flatter structure: source code, auxiliary information, and images are stored directly in their respective version directories, without the six category subdirectories.</p>
+      </div>
+    </section>
+    <section class="section shaded" id="metrics" aria-labelledby="metrics-title">
+      <div class="container">
+        <p class="eyebrow">Multi-dimensional evaluation</p>
+        <h2 id="metrics-title">Metrics</h2>
+        <p class="section-intro">FigCodeBench combines image-oriented and code-oriented evaluation with machine opinion scoring and figure-code fidelity.</p>
+        <div class="metric-grid">
+          <article><span class="metric-number">01</span><h3>Image-oriented metrics</h3><p>Evaluation of reproduced figure images.</p><a href="#image-results">View image-oriented results <span aria-hidden="true">→</span></a></article>
+          <article><span class="metric-number">02</span><h3>Code-oriented metrics</h3><p>Evaluation of reproducing code.</p><a href="#code-results">View code-oriented results <span aria-hidden="true">→</span></a></article>
+          <article><span class="metric-number">03</span><h3>Mean Machine Opinion Score</h3><p>MMOS results, detailed score distributions, and qualitative examples.</p><a href="#mmos-results">View MMOS results <span aria-hidden="true">→</span></a></article>
+          <article><span class="metric-number">04</span><h3>Figure-Code Fidelity</h3><p>The Figure-Code Fidelity (FCF) metric.</p><a href="#fcf-results">View FCF results <span aria-hidden="true">→</span></a></article>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="models" aria-labelledby="models-title">
+      <div class="container">
+        <p class="eyebrow">The evaluated model landscape</p>
+        <h2 id="models-title">Evaluated models</h2>
+        <p class="section-intro">24 mainstream MLLMs: <strong>11 proprietary</strong> and <strong>13 open-source</strong> models.</p>
+        <figure class="research-figure models-figure">
+          <a class="figure-link" href="asset/evaluated_models.png" data-zoom aria-label="View evaluated models at full size"><img src="asset/evaluated_models.png" width="1574" height="1126" loading="lazy" decoding="async" alt="Overview of the 24 evaluated MLLMs, including proprietary and open-source models"></a>
+          <figcaption>The models selected for evaluation in FigCodeBench.</figcaption>
+        </figure>
+      </div>
+    </section>
+    <section class="section shaded" id="leaderboard" aria-labelledby="leaderboard-title">
+      <div class="container">
+        <p class="eyebrow">Figure reproduction proficiency</p>
+        <h2 id="leaderboard-title">FigCodeBench leaderboard</h2>
+        <p class="section-intro">Performance, evaluation cost, and results across image categories.</p>
+        <figure class="research-figure">
+          <a class="figure-link" href="asset/leaderboard.png" data-zoom aria-label="View the FigCodeBench leaderboard at full size"><img src="asset/leaderboard.png" width="1912" height="701" loading="lazy" decoding="async" alt="Leaderboard showing MMOS versus average cost per problem and six representative models across image categories"></a>
+          <figcaption><strong>Left:</strong> Mean Machine Opinion Score (MMOS) versus average cost per problem for various models. <strong>Right:</strong> Performance comparison of six representative models on different image categories.</figcaption>
+        </figure>
+        <p class="figure-help">Expand a result below. Select any research figure to view it at full size.</p>
+        <div class="results">
+          <details id="cost-results"><summary>Evaluation cost</summary><div class="detail-body"><figure class="research-figure compact-figure"><a class="figure-link" href="asset/cost.png" data-zoom aria-label="View evaluation cost at full size"><img src="asset/cost.png" width="1372" height="986" loading="lazy" decoding="async" alt="Evaluation cost comparison for models in FigCodeBench"></a><figcaption>Evaluation cost.</figcaption></figure></div></details>
+          <details id="image-results"><summary>Results on image-oriented metrics</summary><div class="detail-body"><figure class="research-figure"><a class="figure-link" href="asset/image-oriented-metrics.png" data-zoom aria-label="View image-oriented results at full size"><img src="asset/image-oriented-metrics.png" width="2149" height="983" loading="lazy" decoding="async" alt="Model results on image-oriented metrics"></a><figcaption>Image-oriented metric results.</figcaption></figure></div></details>
+          <details id="code-results"><summary>Results on code-oriented metrics</summary><div class="detail-body"><figure class="research-figure compact-figure"><a class="figure-link" href="asset/code-oriented%20metrics.png" data-zoom aria-label="View code-oriented results at full size"><img src="asset/code-oriented%20metrics.png" width="1484" height="946" loading="lazy" decoding="async" alt="Model results on code-oriented metrics"></a><figcaption>Code-oriented metric results.</figcaption></figure></div></details>
+          <details id="mmos-results"><summary>Results on Mean Machine Opinion Score (MMOS)</summary><div class="detail-body">
+            <figure class="research-figure"><a class="figure-link" href="asset/MLLM-judges.png" data-zoom aria-label="View MLLM judge results at full size"><img src="asset/MLLM-judges.png" width="1949" height="1021" loading="lazy" decoding="async" alt="Mean Machine Opinion Score results using MLLM judges"></a><figcaption>MMOS evaluation with MLLM judges.</figcaption></figure>
+            <h3>Detailed MMOS distribution</h3><figure class="research-figure"><a class="figure-link" href="asset/fine-grained_MMOS.png" data-zoom aria-label="View detailed MMOS distribution at full size"><img src="asset/fine-grained_MMOS.png" width="1738" height="1118" loading="lazy" decoding="async" alt="Fine-grained distribution of Mean Machine Opinion Scores"></a><figcaption>Detailed MMOS distribution.</figcaption></figure>
+            <h3>Qualitative results</h3><figure class="research-figure"><a class="figure-link" href="asset/MMOS.png" data-zoom aria-label="View qualitative MMOS results at full size"><img src="asset/MMOS.png" width="1916" height="1184" loading="lazy" decoding="async" alt="Qualitative figure reproduction examples for MMOS evaluation"></a><figcaption>Qualitative MMOS results.</figcaption></figure>
+          </div></details>
+          <details id="fcf-results"><summary>Results on Figure-Code Fidelity (FCF)</summary><div class="detail-body"><figure class="research-figure"><a class="figure-link" href="asset/FCF.png" data-zoom aria-label="View Figure-Code Fidelity results at full size"><img src="asset/FCF.png" width="1913" height="1103" loading="lazy" decoding="async" alt="Results on the Figure-Code Fidelity metric"></a><figcaption>Figure-Code Fidelity (FCF) results.</figcaption></figure></div></details>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="environments" aria-labelledby="environments-title">
+      <div class="container">
+        <p class="eyebrow">Reproducing the figures</p>
+        <h2 id="environments-title">Environments</h2>
+        <p class="section-intro">Reference runtimes and rendering settings for the four language collections.</p>
+        <div class="table-scroll" role="region" aria-label="Reference environments table" tabindex="0">
+          <table><thead><tr><th scope="col">Collection</th><th scope="col">Runtime / toolchain</th><th scope="col">Main libraries or settings</th></tr></thead><tbody>
+            <tr><th scope="row">Python</th><td>Python</td><td>Primarily <code>matplotlib</code> and <code>seaborn</code>; the execution workflow automatically detects and installs missing packages.</td></tr>
+            <tr><th scope="row">MATLAB</th><td>MATLAB R2023a</td><td>Additional toolboxes may be required by individual scripts.</td></tr>
+            <tr><th scope="row">R</th><td>R 4.6.0</td><td>The execution workflow automatically detects and installs missing R packages.</td></tr>
+            <tr><th scope="row">LaTeX</th><td>A TeX distribution providing XeLaTeX</td><td><code>xelatex</code> is the reference rendering engine; 300 DPI for rasterized output.</td></tr>
+          </tbody></table>
+        </div>
+        <p>LaTeX examples require the packages and fonts they use. <code>pdflatex</code> may work for compatible examples, but is not the reference engine; XeLaTeX-specific font or Unicode features may not compile with it.</p>
+        <p class="note">Consult the <a href="https://github.com/zijianchen98/FigCodeBench#environments">repository environment documentation</a> for setup context and check the files available in your checkout before running a generation workflow.</p>
+      </div>
+    </section>
+    <section class="section shaded" id="contact" aria-labelledby="contact-title">
+      <div class="container narrow centered">
+        <h2 id="contact-title">Contact</h2>
+        <p>Please contact the first author of this paper for queries.</p>
+        <p><strong>Zijian Chen</strong><br><a href="mailto:zijian.chen@sjtu.edu.cn">zijian.chen@sjtu.edu.cn</a></p>
+      </div>
+    </section>
+    <section class="section" id="citation" aria-labelledby="citation-title">
+      <div class="container">
+        <h2 id="citation-title">Citation</h2>
+        <p class="section-intro">Please feel free to cite our paper.</p>
+        <div class="citation-toolbar"><span>BibTeX</span><button type="button" id="copy-citation" hidden>Copy citation</button></div>
+        <pre class="citation-block"><code id="bibtex">@misc{chen2026pixelcodingevaluatingfigure,
+      title={From Pixel to Coding: Evaluating the Figure Reproduction Capabilities of MLLMs}, 
+      author={Zijian Chen and Zhengyu Chen and Bohan Liang and Lirong Deng and Yushuo Zheng and Yanwei Jiang and Qi Jia and Kaiwei Zhang and Wenjun Zhang and Guangtao Zhai},
+      year={2026},
+      eprint={2610.10066},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2610.10066}, 
+}</code></pre>
+        <p class="copy-status" id="copy-status" role="status" aria-live="polite"></p>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="container"><p>FigCodeBench · From Pixel to Coding</p><a href="#top">Back to top <span aria-hidden="true">↑</span></a></div>
+  </footer>
+  <dialog id="image-dialog" aria-labelledby="zoom-title" aria-describedby="zoom-help">
+    <div class="dialog-toolbar"><h2 id="zoom-title">Research figure</h2><button type="button" id="close-dialog" aria-label="Close full-size figure">Close <span aria-hidden="true">×</span></button></div>
+    <p id="zoom-help">Scroll to inspect the full-size image. Press Escape or select Close to return.</p>
+    <div class="zoom-scroll"><img id="zoom-image" alt=""></div>
+    <a id="zoom-original" href="asset/intro.png" target="_blank" rel="noopener">Open original image in a new tab</a>
+  </dialog>
+</body>
+</html>

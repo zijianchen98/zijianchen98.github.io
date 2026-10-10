@@ -1,0 +1,14 @@
+url: https://zijianchen98.github.io
+baseurl: ""
+collections:
+  publications:
+    output: false
+exclude:
+  - vendor
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - .bundle
+  - .jekyll-cache
+  - .jekyll-metadata
+  - .DS_Store
