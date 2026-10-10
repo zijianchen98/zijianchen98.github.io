@@ -1,6 +1,6 @@
 ---
 title: 'ROOTS: Recognizing Oracle Bone Inscriptions via an Organized Tree Structure'
-authors: 'Ziqi Li*, <strong>Zijian Chen*</strong><sup>*</sup>, Ziyi Yang, Zhiji Liu, Guangtao Zhai, Tingzhu Chen<sup>†</sup>'
+authors: 'Ziqi Li*, <strong>Zijian Chen*</strong>, Ziyi Yang, Zhiji Liu, Guangtao Zhai, Tingzhu Chen<sup>†</sup>'
 year: 2026
 venue: npj heritage science
 highlight: '<strong>(NEW)</strong>'
