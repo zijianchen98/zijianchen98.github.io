@@ -30,7 +30,7 @@
                     I am currently a third-year PhD Student of <a href="https://multimedia.sjtu.edu.cn/">Multimedia Lab</a> at <a href="https://sjtu.edu.cn/">Shanghai Jiao Tong University (SJTU)</a>, advised by <a href="https://ee.sjtu.edu.cn/FacultyDetail.aspx?id=24&infoid=66&flag=66">Prof. Guangtao Zhai</a> and <a href="https://ee.sjtu.edu.cn/FacultyDetail.aspx?id=14&infoid=66&flag=66">Prof. Wenjun Zhang</a>.
                     Previously, I received my M.E. degree from <a href="https://www.ecust.edu.cn/">East China University of Science and Technology</a> in June 2023, and B.S. degree in EE from <a href="https://www.wzu.edu.cn/">Wenzhou University</a> in June 2020. </p>
                   <p>
-                    I'm generally interested in <strong>visual quality assessment</strong>, <strong>Agentic AI</strong>, especially <strong>All-round Evaluation</strong>, and Digital Humanities (Oracle bone character processing).
+                    I'm generally interested in <strong>Visual Quality Assessment</strong>, <strong>Agentic AI</strong>, especially <strong>All-round Evaluation</strong>, and <strong>Digital Humanities</strong> (Oracle bone character processing).
                     My ultimate goal is to explore the limits of AI's capabilities.
                   </p>  
                   <p>
@@ -95,6 +95,119 @@
               </tr>
             </tbody>
           </table>
+          
+          <table style="
+              width: 100%;
+              border: 0px;
+              border-spacing: 0px;
+              border-collapse: separate;
+              margin-right: auto;
+              margin-left: auto;
+            ">
+          <tr>
+            <td style="padding: 2.5%; width: 100%; vertical-align: middle">
+              <h2>Selected Publications</h2>
+              --> For the full publication list, please refer to my
+              <a href="https://scholar.google.com/citations?hl=en&user=ssSfKpAAAAAJ&view_op=list_works&sortby=pubdate">Google
+                Scholar</a>.
+              <!-- <p>
+                &dagger; denotes corresponding author. * denotes equal
+                contribution.
+              </p> -->
+              <!-- Value: init categories_list with a long string -->
+              {% assign categories_list = "All Selected Publications,Simulation/Hardware Systems for Embodied AI,Humanoids and Motion Intelligence,Manipulation and Navigation Intelligence,AIGC for Embodied AI,3D Vision and Embodied Perception" | split: "," %}
+
+              <table style="
+                    width: 100%;
+                    border: 0px;
+                    margin-right: auto;
+                    margin-left: auto;
+                  ">
+                <tr>
+                  <td style="text-align: left">
+                    <a href="#" onclick="event.preventDefault();showTable('{{categories_list[0]}}')"
+                      class="nav-link">All Selected Publications</a>
+                  </td>
+                  <td style="text-align: left">
+                    <a href="#" onclick="event.preventDefault();showTable('{{categories_list[1]}}')"
+                      class="nav-link">Simulation/Hardware Systems for Embodied AI</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="text-align: left">
+                    <a href="#" onclick="event.preventDefault();showTable('{{categories_list[2]}}')"
+                      class="nav-link">Humanoids and Motion Intelligence</a>
+                  </td>
+                  <td style="text-align: left">
+                    <a href="#" onclick="event.preventDefault();showTable('{{categories_list[3]}}')"
+                      class="nav-link">Manipulation and Navigation Intelligence</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="text-align: left">
+                    <a href="#" onclick="event.preventDefault();showTable('{{categories_list[4]}}')" class="nav-link">AIGC for Embodied AI</a>
+                  </td>
+                  <td style="text-align: left">
+                    <a href="#" onclick="event.preventDefault();showTable('{{categories_list[5]}}')" class="nav-link">3D
+                      Vision and Embodied Perception</a>
+                  </td>
+                  <!-- <td style="text-align: left">
+                    <a href="#" onclick="event.preventDefault();showTable('{{categories_list[5]}}')"
+                      class="nav-link">Others</a>
+                  </td> -->
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+        <br />
+        <!-- Layout: Create 5 tables, each representing a category from the list-->
+        <div id="table-container">
+
+          {% for category in categories_list %}
+          <table id="{{category}}" style="
+                width: 100%;
+                border: 0px;
+                border-spacing: 0px;
+                border-collapse: separate;
+                margin-right: auto;
+                margin-left: auto;
+              ">
+            {% for post in site.posts %} {% if post.sub_fields == category or post.sub_fields2 == category or "All Selected Publications" == category%}
+            <tr>
+              <td style="
+                    padding: 2.5%;
+                    width: 25%;
+                    vertical-align: middle;
+                    min-width: 120px;
+                  ">
+                <img src="/{{post.image}}" alt="project image" style="width: auto; height: auto; max-width: 100%" />
+              </td>
+              <td style="padding: 0%; width: 75%; vertical-align: middle">
+                <h3>{{post.title}}</h3>
+                <br />
+                {{post.authors}}
+                <br />
+                <em>{{post.venue}}</em>, {{ post.date | date: "%Y" }} {% if
+                post.highlight %}
+                <br />
+                <font style="color: red">{{post.highlight}}</font>
+                {% endif %}
+                <br />
+                {% if post.page %}
+                <a href="{{post.page}}">project page</a> / {% endif %} {% if
+                post.arxiv %} <a href="{{post.arxiv}}">arXiv</a> {% endif %}
+                {% if post.code %} / <a href="{{post.code}}"> code</a>
+                {% endif %}
+                <p></p>
+                {{ post.excerpt }}
+              </td>
+            </tr>
+            {% endif %} {% endfor %}
+          </table>
+          {% endfor %}
+        </div>
+
 
           <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
             <tbody>
@@ -712,9 +825,9 @@ semantic slot extraction, and contextual reasoning tasks.</p>
                     <li> International Conference on Machine Learning (<strong>ICML</strong> <a href="https://icml.cc/Conferences/2026">2026</a>) </li>
                     <li> IEEE Conference on Computer Vision and Pattern Recognition (<strong>CVPR</strong> <a href="https://cvpr.thecvf.com/Conferences/2026">2026</a>)</li>
                     <li> Annual Conference on Neural Information Processing Systems (<strong>NeurIPS</strong> <a href="https://neurips.cc/Conferences/2025">2025, 2026</a>) </li>
-                    <li> International Conference on Learning Representations (<strong>ICLR</strong> <a href="https://iclr.cc/">2025, 2026</a>) </li>
+                    <li> International Conference on Learning Representations (<strong>ICLR</strong> <a href="https://iclr.cc/">25-27</a>) </li>
                     <li> ACM Multimedia (<strong>ACM MM</strong> <a href="https://2025.acmmm.org/">2025, 2026</a>) </li>
-                    <li> Annual AAAI Conference on Artificial Intelligence (<strong>AAAI</strong> <a href="https://aaai.org/conference/aaai/aaai-26/">2026</a>) </li>
+                    <li> Annual AAAI Conference on Artificial Intelligence (<strong>AAAI</strong> <a href="https://aaai.org/conference/aaai/aaai-26/">26-27</a>) </li>
                     <li> European Conference on Computer Vision (<strong>ECCV</strong> <a href="https://eccv.ecva.net/">2026</a>) </li>
                     <li> IEEE Transactions on Pattern Analysis and Machine Intelligence (<strong>TPAMI</strong> <a href="https://ieeexplore.ieee.org/xpl/aboutJournal.jsp?punumber=34">2026</a>) </li>
                     <li> IEEE Transactions on Multimedia (<strong>TMM</strong> <a href="https://signalprocessingsociety.org/publications-resources/ieee-transactions-multimedia">2025</a>) </li>
