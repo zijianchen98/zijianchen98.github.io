@@ -4,6 +4,7 @@ authors: '<a href="https://scholar.google.com.hk/citations?hl=zh-CN&amp;user=NSR
 
 year: 2026
 venue: arxiv
+highlight: '<strong>(NEW)</strong>'
 fields: [llm]
 status: preprint
 order: 20

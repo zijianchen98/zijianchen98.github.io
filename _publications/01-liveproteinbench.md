@@ -3,7 +3,6 @@ title: "LiveProteinBench: A Contamination-Free Benchmark for Assessing Models' S
 authors: 'Dingyi Rong*, <strong>Zijian Chen*</strong>, Qi Jia*, Kaiwei Zhang, Haotian Liu, Guangtao Zhai<sup>†</sup>, Ning Liu<sup>†</sup>'
 year: 2025
 venue: arXiv
-highlight: '<strong>(NEW)</strong>'
 fields: [llm]
 status: preprint
 order: 1
