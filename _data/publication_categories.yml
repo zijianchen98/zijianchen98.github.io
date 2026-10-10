@@ -1,10 +1,9 @@
 - id: all
   label: All Selected Publications
 - id: llm
-  label: MLLM / LLM
+  label: MLLM / LLM Evaluation
 - id: quality
   label: Image / Video Quality Assessment / Low-level
 - id: obi
   label: Oracle Bone Inscriptions Processing
-- id: preprints
-  label: Preprints
+
