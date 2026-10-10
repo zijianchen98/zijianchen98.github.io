@@ -5,7 +5,7 @@ year: 2025
 venue: arXiv
 fields: [llm]
 status: preprint
-order: 1
+order: 20
 image: /images/liveproteinbench.png
 image_alt: LiveProteinBench
 title_url: https://arxiv.org/abs/2512.22257

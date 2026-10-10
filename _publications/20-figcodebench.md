@@ -7,7 +7,7 @@ venue: arxiv
 highlight: '<strong>(NEW)</strong>'
 fields: [llm]
 status: preprint
-order: 20
+order: 1
 image: /FigCodeBench/asset/intro.png
 image_alt: FigCodeBench
 title_url: https://github.com/zijianchen98/FigCodeBench
@@ -19,4 +19,4 @@ links:
   - label: dataset
     url: https://huggingface.co/datasets/CCZZJJ/FigCodeBench
 ---
-<p> We propose FigCodeBench, a comprehensive framework for rigorously evaluating MLLMs on figure reproduction, integrating multimodal comprehension and generation.</p>
+<p> We propose <strong>FigCodeBench</strong>, a comprehensive framework for rigorously evaluating MLLMs on figure reproduction, integrating multimodal comprehension and generation.</p>
